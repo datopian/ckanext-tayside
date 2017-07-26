@@ -44,6 +44,8 @@ To install ckanext-tayside:
 3. Add ``tayside`` to the ``ckan.plugins`` setting in your CKAN
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
+   Important note: Please make sure to be inserted before showcase and datarequests
+   in order both of these extensions to be visible in the menu.
 
 4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu::
 
