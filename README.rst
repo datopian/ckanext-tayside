@@ -2,35 +2,13 @@
    these badges work. The necessary Travis and Coverage config files have been
    generated for you.
 
-.. image:: https://travis-ci.org/duskobogdanovski/ckanext-tayside.svg?branch=master
-    :target: https://travis-ci.org/duskobogdanovski/ckanext-tayside
+.. image:: https://travis-ci.org/ViderumGlobal/ckanext-tayside.svg?branch=master
+    :target: https://travis-ci.org/ViderumGlobal/ckanext-tayside
 
-.. image:: https://coveralls.io/repos/duskobogdanovski/ckanext-tayside/badge.svg
-  :target: https://coveralls.io/r/duskobogdanovski/ckanext-tayside
 
-.. image:: https://pypip.in/download/ckanext-tayside/badge.svg
-    :target: https://pypi.python.org/pypi//ckanext-tayside/
-    :alt: Downloads
-
-.. image:: https://pypip.in/version/ckanext-tayside/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-tayside/
-    :alt: Latest Version
-
-.. image:: https://pypip.in/py_versions/ckanext-tayside/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-tayside/
-    :alt: Supported Python versions
-
-.. image:: https://pypip.in/status/ckanext-tayside/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-tayside/
-    :alt: Development Status
-
-.. image:: https://pypip.in/license/ckanext-tayside/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-tayside/
-    :alt: License
-
-=============
+===============
 ckanext-tayside
-=============
+===============
 
 .. Put a description of your extension here:
    What does it do? What features does it have?
@@ -61,7 +39,7 @@ To install ckanext-tayside:
 
 2. Install the ckanext-tayside Python package into your virtual environment::
 
-     pip install ckanext-tayside
+     pip install git+https://github.com/ViderumGlobal/ckanext-tayside.git#egg=ckanext-tayside
 
 3. Add ``tayside`` to the ``ckan.plugins`` setting in your CKAN
    config file (by default the config file is located at
@@ -96,6 +74,33 @@ do::
     pip install -r dev-requirements.txt
 
 
+----------
+Modify CSS
+----------
+
+This extension uses LESS for styles. All changes must be made in one of the LESS
+files located in the ``ckanext-tayside/ckanext/tayside/fanstatic/less`` folder.
+
+In order to compile those files to CSS, the `less <https://www.npmjs.com/package/less>`_
+npm module is used.
+
+First make sure that you have installed `Node.js <https://nodejs.org/en/>`_. That
+will install the ``npm`` package manager. After that, open up the terminal and
+change the current directory to ``ckanext-tayside/ckanext/tayside/fanstatic``.
+
+Then run the following command that is going to install LESS::
+
+    npm install less
+
+After a successful installation, run the next command to compile the main less
+file ``tayside.less`` to ``tayside.css``::
+
+    ./node_modules/.bin/lessc less/tayside.less css/tayside.css
+
+Every time there is some change in one of the less files, the upper command
+needs to be run to compile those files to one css file.
+
+
 -----------------
 Running the Tests
 -----------------
@@ -108,59 +113,3 @@ To run the tests and produce a coverage report, first make sure you have
 coverage installed in your virtualenv (``pip install coverage``) then run::
 
     nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.tayside --cover-inclusive --cover-erase --cover-tests
-
-
----------------------------------
-Registering ckanext-tayside on PyPI
----------------------------------
-
-ckanext-tayside should be availabe on PyPI as
-https://pypi.python.org/pypi/ckanext-tayside. If that link doesn't work, then
-you can register the project on PyPI for the first time by following these
-steps:
-
-1. Create a source distribution of the project::
-
-     python setup.py sdist
-
-2. Register the project::
-
-     python setup.py register
-
-3. Upload the source distribution to PyPI::
-
-     python setup.py sdist upload
-
-4. Tag the first release of the project on GitHub with the version number from
-   the ``setup.py`` file. For example if the version number in ``setup.py`` is
-   0.0.1 then do::
-
-       git tag 0.0.1
-       git push --tags
-
-
-----------------------------------------
-Releasing a New Version of ckanext-tayside
-----------------------------------------
-
-ckanext-tayside is availabe on PyPI as https://pypi.python.org/pypi/ckanext-tayside.
-To publish a new version to PyPI follow these steps:
-
-1. Update the version number in the ``setup.py`` file.
-   See `PEP 440 <http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers>`_
-   for how to choose version numbers.
-
-2. Create a source distribution of the new version::
-
-     python setup.py sdist
-
-3. Upload the source distribution to PyPI::
-
-     python setup.py sdist upload
-
-4. Tag the new release of the project on GitHub with the version number from
-   the ``setup.py`` file. For example if the version number in ``setup.py`` is
-   0.0.2 then do::
-
-       git tag 0.0.2
-       git push --tags
