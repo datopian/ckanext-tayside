@@ -7,6 +7,8 @@ cache: pip
 install:
     - bash bin/travis-build.bash
     - pip install coveralls
-script: sh bin/travis-run.sh
+script:
+  - sh bin/travis-run.sh
+  - pycodestyle --count ./ckanext/tayside
 after_success:
     - coveralls
