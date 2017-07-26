@@ -68,7 +68,7 @@ Development Installation
 To install ckanext-tayside for development, activate your CKAN virtualenv and
 do::
 
-    git clone https://github.com/duskobogdanovski/ckanext-tayside.git
+    git clone https://github.com/ViderumGlobal/ckanext-tayside.git
     cd ckanext-tayside
     python setup.py develop
     pip install -r dev-requirements.txt
