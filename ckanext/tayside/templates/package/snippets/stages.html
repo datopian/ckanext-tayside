@@ -1,0 +1,5 @@
+{% set is_metadata_dataset = request.params.metadata %}
+
+{% if not is_metadata_dataset %}
+  {% ckan_extends %}
+{% endif %}
