@@ -122,8 +122,4 @@ Funded by
 ---------
 
 .. image:: smart.png
-    :height: 150px
-    :width: 150px
 .. image:: euro_scot.png
-    :height: 96px
-    :width: 200px
