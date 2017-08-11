@@ -1,9 +1,11 @@
 {
   "name": "ckanext-tayside",
   "scripts": {
+    "watch": "less-watch-compiler less/ css/ tayside.less",
     "less": "./node_modules/.bin/lessc less/tayside.less css/tayside.css"
   },
   "devDependencies": {
-    "less": "^2.7.2"
+    "less": "^2.7.2",
+    "less-watch-compiler": "^1.6.7"
   }
 }
