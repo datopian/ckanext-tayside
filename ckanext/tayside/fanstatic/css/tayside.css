@@ -1,5 +1,136 @@
-.navbar-static-top .container {
-  width: 965px;
+/* Colors */
+/* Responsive */
+/* Grid */
+/* Navigation */
+.nav-pills-active-bg-color {
+  background-color: #78388e;
+}
+.inputs-style {
+  border-color: #caced7;
+}
+.inputs-style:focus {
+  border-color: #168198;
+  box-shadow: none;
+}
+body {
+  background: #ffffff;
+}
+.site-footer {
+  background: #6d778a;
+}
+.homepage .module-search .module-content {
+  background-color: #168198;
+}
+.homepage .module-search .tags {
+  background-color: #78388e;
+}
+.hero {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.wrapper {
+  border: none;
+  box-shadow: none;
+}
+[role=main]:not(.hero),
+.main:not(.hero) {
+  background: #ffffff;
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  border-color: #caced7;
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #168198;
+  box-shadow: none;
+}
+.account-masthead {
+  background-color: #4b5363;
+}
+.account-masthead .account ul li a:hover {
+  background-color: #168198;
+}
+.masthead {
+  background: #ffffff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.masthead a {
+  color: #168198;
+}
+.masthead .btn-navbar {
+  background-color: #6d778a;
+}
+.masthead .btn-navbar:hover,
+.masthead .btn-navbar:focus {
+  background-color: #168198;
+}
+.masthead .site-search {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.masthead input[type="text"] {
+  border-color: #caced7;
+}
+.masthead input[type="text"]:focus {
+  border-color: #168198;
+  box-shadow: none;
+}
+.nav-main {
+  background-color: #168198;
+}
+.nav-main .nav-collapse .nav > li a {
+  color: #ffffff;
+  font-weight: 400;
+}
+.nav-main .nav {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.nav-main .nav a {
+  color: #ffffff;
+}
+.nav-main .nav a:hover,
+.nav-main .nav a:focus {
+  background-color: #78388e;
+}
+.nav-main .nav .active a {
+  background-color: #78388e;
+}
+@media (min-width: 1200px) {
+  .nav-main .nav > li:not(:first-child) {
+    margin-left: 7.5px;
+  }
 }
 .add-dataset-modal {
   position: fixed;
@@ -37,3 +168,4 @@
 .add-dataset-modal-backdrop {
   display: none;
 }
+/*# sourceMappingURL=tayside.css.map */
