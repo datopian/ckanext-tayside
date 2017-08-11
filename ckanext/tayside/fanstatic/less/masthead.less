@@ -1,0 +1,44 @@
+.account-masthead{
+    background-color: @color-neutral-dark;
+
+    .account{
+        ul{
+            li{
+                a{
+                    &:hover{
+                        background-color: @color-primary;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.masthead{
+    background: @color-white;
+    padding-top: @grid-gutter-width/2;
+    padding-bottom: @grid-gutter-width/2;
+
+    a{
+        color: @color-primary;
+    }
+
+    .btn-navbar{
+        background-color: @color-neutral;
+
+        &:hover,
+        &:focus{
+            background-color: @color-primary;
+        }
+    }
+
+    .site-search{
+        margin-top: @grid-gutter-width/2;
+        margin-bottom: @grid-gutter-width/2;
+    }
+
+    input[type="text"]{
+        .inputs-style;
+    }
+}

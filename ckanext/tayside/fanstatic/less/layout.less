@@ -1,0 +1,55 @@
+body{
+    background: @color-white;
+}
+
+.site-footer{
+    background: @color-neutral;
+}
+
+.homepage{
+    .module-search{
+        .module-content{
+            background-color: @color-primary;
+        }
+        .tags{
+            background-color: @color-secondary;
+        }
+    }
+}
+
+.hero{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper{
+    border: none;
+    box-shadow: none;
+}
+
+[role=main],
+.main{
+    &:not(.hero){
+        background: @color-white;
+    }
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input{
+    .inputs-style;
+}
