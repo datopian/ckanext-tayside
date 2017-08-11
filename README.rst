@@ -115,3 +115,11 @@ To run the tests and produce a coverage report, first make sure you have
 coverage installed in your virtualenv (``pip install coverage``) then run::
 
     nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.tayside --cover-inclusive --cover-erase --cover-tests
+
+
+---------
+Funded by
+---------
+
+.. image:: smart.png
+.. image:: euro_scot.png
