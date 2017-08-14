@@ -1,5 +1,6 @@
 body{
     background: @color-white;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .site-footer{
@@ -23,6 +24,18 @@ body{
     background-position: center;
 }
 
+.hero-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero-search-symbol{
+    max-width: @grid-gutter-width*5;
+    margin: @grid-gutter-width/2 @grid-gutter-width;
+}
+
 .wrapper{
     border: none;
     box-shadow: none;
@@ -32,6 +45,12 @@ body{
 .main{
     &:not(.hero){
         background: @color-white;
+    }
+}
+
+#content{
+    .wrapper{
+        background: transparent;
     }
 }
 
