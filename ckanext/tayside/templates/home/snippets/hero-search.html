@@ -1,8 +1,8 @@
-{% set placeholder = _('E.g. environment') %}
+{% set placeholder = _('Search (e.g. "Parking" or "Schools"') %}
 
-<div class="module module-search module-narrow module-shallow box">
+<img class="hero-search-symbol" src="http://127.0.0.1:5000/base/images/ckan-logo.svg" alt="logo">
+<div class="module module-hero-search module-narrow module-shallow">
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
-    <h3 class="heading">{{ _("Search data") }}</h3>
     <div class="search-input control-group search-giant">
       <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{% block search_placeholder %}{{ placeholder }}{% endblock %}" />
       <button type="submit">
