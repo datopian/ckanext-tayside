@@ -1,55 +1,60 @@
-.account-masthead{
+.account-masthead {
     background-color: @color-neutral-light;
-
-    .account{
-        .notifications{
-            a{
-                span{
-                    &.badge{
+    .account {
+        .notifications {
+            a {
+                span {
+                    &.badge {
                         background-color: @color-primary;
                     }
                 }
             }
         }
-        ul{
-            li{
+        ul {
+            li {
                 border-left: transparent;
-                a{
+                a {
                     color: @color-neutral-dark;
-                    &:hover{
+                    &:hover {
                         background-color: @color-neutral-dark;
                     }
                 }
             }
         }
     }
-
 }
 
-.masthead{
+.masthead {
     background: @color-white;
     padding-top: @grid-gutter-width/2;
     padding-bottom: @grid-gutter-width/2;
-
-    a{
+    a {
         color: @color-primary;
     }
-
-    .btn-navbar{
+    .btn-navbar {
         background-color: @color-neutral;
-
         &:hover,
-        &:focus{
+        &:focus {
             background-color: @color-primary;
         }
     }
-
-    .site-search{
+    .site-search {
         margin-top: @grid-gutter-width/2;
         margin-bottom: @grid-gutter-width/2;
     }
-
-    input[type="text"]{
+    input[type="text"] {
         .inputs-style;
+    }
+    .twitter {
+        margin: @grid-gutter-width/2 @grid-gutter-width;
+        display: inline-block;
+        a {
+            color: #1DA1F2;
+        }
+        img {
+            position: relative;
+            bottom: 3px;
+            margin-right: @grid-gutter-width/6;
+        }
     }
 }
