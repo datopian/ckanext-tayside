@@ -20,11 +20,7 @@ header_account %}
         </div>
 
         <div class="pull-right">
-            <div class="section twitter">
-                <a href="https://www.twitter.com/">
-                    <img width="32" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiMxREExRjI7fQo8L3N0eWxlPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01MDMuOCwxMDYuMWMtMTguNCw4LjItMzguMiwxMy43LTU4LjksMTYuMmMyMS4yLTEyLjcsMzcuNC0zMi44LDQ1LjEtNTYuOGMtMTkuOCwxMS44LTQxLjgsMjAuMy02NS4xLDI0LjkgIEM0MDYuMSw3MC41LDM3OS40LDU4LDM0OS45LDU4Yy01Ni43LDAtMTAyLjYsNDUuOS0xMDIuNiwxMDIuNmMwLDgsMC45LDE1LjksMi43LDIzLjRjLTg1LjMtNC4zLTE2MC44LTQ1LjEtMjExLjQtMTA3LjIgIGMtOC44LDE1LjEtMTMuOSwzMi44LTEzLjksNTEuNmMwLDM1LjYsMTguMSw2Nyw0NS42LDg1LjRjLTE2LjgtMC41LTMyLjYtNS4xLTQ2LjUtMTIuOGMwLDAuNCwwLDAuOSwwLDEuMyAgYzAsNDkuNywzNS40LDkxLjIsODIuMywxMDAuNmMtOC42LDIuMy0xNy43LDMuNi0yNywzLjZjLTYuNiwwLTEzLTAuNi0xOS4zLTEuOGMxMy4xLDQwLjgsNTAuOSw3MC40LDk1LjgsNzEuMiAgYy0zNS4xLDI3LjUtNzkuMyw0My45LTEyNy40LDQzLjljLTguMywwLTE2LjQtMC41LTI0LjUtMS40YzQ1LjQsMjkuMSw5OS4zLDQ2LjEsMTU3LjIsNDYuMWMxODguNywwLDI5MS45LTE1Ni4zLDI5MS45LTI5MS45ICBjMC00LjQtMC4xLTguOS0wLjMtMTMuM0M0NzIuNiwxNDQuOCw0OTAsMTI2LjcsNTAzLjgsMTA2LjF6Ii8+PC9zdmc+" alt="Twitter icon"><span>{{ _('Follow us on Twitter') }}</span>
-                </a>
-            </div>
+            {% snippet 'snippets/twitter_follow_button.html' %}
             {% block header_site_search %} {{ super() }} {% endblock %}
             <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
                 <span class="icon-bar"></span>
