@@ -99,6 +99,11 @@ input[type="color"]:focus,
 .list-wide li:not(:last-child) {
   margin-right: 10px;
 }
+@media (min-width: 768px) {
+  .span9 .page-header {
+    margin-left: 0;
+  }
+}
 .account-masthead {
   background-color: #caced7;
 }
