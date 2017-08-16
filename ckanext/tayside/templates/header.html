@@ -32,7 +32,9 @@
       </div>
 
       <div class="pull-right">
-        {% snippet 'snippets/twitter_follow_button.html' %}
+        {% if app_globals.twitter_username %}
+          {% snippet 'snippets/twitter_follow_button.html' %}
+        {% endif %}
         {% block header_site_search %}
           {% if request.host_url != request.url[:-1] %}
             {{ super() }}

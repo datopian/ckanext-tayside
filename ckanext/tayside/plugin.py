@@ -9,6 +9,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IDatasetForm, inherit=True)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IConfigurer)
 
     # IConfigurer
 
@@ -39,3 +40,14 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         return {
             'tayside_get_groups': helpers.get_groups
         }
+
+    # IConfigurer
+
+    def update_config_schema(self, schema):
+        ignore_missing = toolkit.get_validator('ignore_missing')
+
+        schema.update({
+            'twitter_username': [ignore_missing, unicode],
+        })
+
+        return schema
