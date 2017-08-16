@@ -1,0 +1,7 @@
+{% ckan_extends %}
+
+{% block page_primary_action %}
+  <div class="page_primary_action">
+    {% snippet 'snippets/add_dataset.html', group=c.group_dict.id %}
+  </div>
+{% endblock %}
