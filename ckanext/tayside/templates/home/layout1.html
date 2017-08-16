@@ -4,48 +4,21 @@
 <div class="container">
     <div class="module module-topics">
             <ul class="module-topics-list">
-                <li>
-                    <a href="#" class="topic">
-                        <img class="topic-icon" src="http://127.0.0.1:5000/base/images/placeholder-group.png" alt="#">
-                        <span class="topic-title">Topic Name Long</span>
+                {% set groups = h.tayside_get_groups() %}
+                {% for group in groups %}
+                  {% set group_url = h.url_for(controller='group', action='read', id=group.name) %}
+                  {% if group.image_display_url %}
+                    {% set group_image = group.image_display_url %}
+                  {% else %}
+                    {% set group_image = '/base/images/placeholder-group.png' %}
+                  {% endif %}
+                  <li>
+                    <a href="{{ group_url }}" class="topic">
+                      <img class="topic-icon" src="{{ group_image }}" alt="{{ group.title }}">
+                      <span class="topic-title">{{ group.title }}</span>
                     </a>
-                </li>
-                <li>
-                    <a href="#" class="topic">
-                        <img class="topic-icon" src="http://127.0.0.1:5000/base/images/placeholder-group.png" alt="#">
-                        <span class="topic-title">Topic Name</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="topic">
-                        <img class="topic-icon" src="http://127.0.0.1:5000/base/images/placeholder-group.png" alt="#">
-                        <span class="topic-title">Topic Name Very Very Very Long</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="topic">
-                        <img class="topic-icon" src="http://127.0.0.1:5000/base/images/placeholder-group.png" alt="#">
-                        <span class="topic-title">Topic Name</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="topic">
-                        <img class="topic-icon" src="http://127.0.0.1:5000/base/images/placeholder-group.png" alt="#">
-                        <span class="topic-title">Topic Name</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="topic">
-                        <img class="topic-icon" src="http://127.0.0.1:5000/base/images/placeholder-group.png" alt="#">
-                        <span class="topic-title">Topic Name</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="topic">
-                        <img class="topic-icon" src="http://127.0.0.1:5000/base/images/placeholder-group.png" alt="#">
-                        <span class="topic-title">Topic Name</span>
-                    </a>
-                </li>
+                  </li>
+                {% endfor %}
             </ul>
     </div>
 </div>

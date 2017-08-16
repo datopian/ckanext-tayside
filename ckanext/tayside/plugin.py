@@ -1,11 +1,14 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
+from ckanext.tayside import helpers
+
 
 class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IDatasetForm, inherit=True)
+    plugins.implements(plugins.ITemplateHelpers)
 
     # IConfigurer
 
@@ -29,3 +32,10 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
     def package_types(self):
         return ['metadata-only']
+
+    # ITemplateHelpers
+
+    def get_helpers(self):
+        return {
+            'tayside_get_groups': helpers.get_groups
+        }
