@@ -1,6 +1,7 @@
 /* Navigation */
 
 .nav-pills-active-bg-color{
+    border-radius: @grid-gutter-width/2;
     background-color: @color-secondary;
 }
 
@@ -11,4 +12,11 @@
         border-color: @color-primary;
         box-shadow: none;
     }
+}
+
+.css-filter(@filter){
+    -webkit-filter: @filter;
+    -moz-filter: @filter;
+    -ms-filter: @filter;
+    filter: @filter;
 }
