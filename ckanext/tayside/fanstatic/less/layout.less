@@ -1,57 +1,57 @@
 body {
-    background: @color-white;
-    font-family: 'Open Sans', sans-serif;
+  background: @color-white;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .site-footer {
-    background: @color-neutral;
+  background: @color-neutral;
 }
 
 .homepage {
-    .module-search {
-        .module-content {
-            background-color: @color-primary;
-        }
-        .tags {
-            background-color: @color-secondary;
-        }
+  .module-search {
+    .module-content {
+      background-color: @color-primary;
     }
+    .tags {
+      background-color: @color-secondary;
+    }
+  }
 }
 
 .hero {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .hero-search-symbol {
-    max-width: @grid-gutter-width*5;
-    margin: 0 @grid-gutter-width @grid-gutter-width/2; // .css-filter(invert(100%));
+  max-width: @grid-gutter-width*5;
+  margin: 0 @grid-gutter-width @grid-gutter-width/2; // .css-filter(invert(100%));
 }
 
 .wrapper {
-    border: none;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
 }
 
 [role=main],
 .main {
-    &:not(.hero) {
-        background: @color-white;
-    }
+  &:not(.hero) {
+    background: @color-white;
+  }
 }
 
 #content {
-    .wrapper {
-        background: transparent;
-    }
+  .wrapper {
+    background: transparent;
+  }
 }
 
 textarea,
@@ -70,16 +70,24 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-    .inputs-style;
+  .inputs-style;
 }
 
 .list-wide {
-    li {
-        &:not(:first-child) {
-            margin-left: @grid-gutter-width/3;
-        }
-        &:not(:last-child) {
-            margin-right: @grid-gutter-width/3;
-        }
+  li {
+    &:not(:first-child) {
+      margin-left: @grid-gutter-width/3;
     }
+    &:not(:last-child) {
+      margin-right: @grid-gutter-width/3;
+    }
+  }
+}
+
+@media (min-width: @screen-tablet) {
+  .span9 {
+    .page-header {
+      margin-left: 0;
+    }
+  }
 }
