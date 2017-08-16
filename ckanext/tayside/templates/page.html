@@ -2,26 +2,26 @@
 
 {%- block content %}
 {% block maintag %}<div role="main">{% endblock %}
-    <div class="container-fluid">
-        {% block flash %}
-        {{ super() }}
-        {% endblock %}
-    </div>
-    <div class="container-fluid">
-        {% block toolbar %}
-        {{ super() }}
-        {% endblock %}
-    </div>
-    <div id="content" class="container">
-        <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
-            {% block primary %}
-            {{ super() }}
-            {% endblock %}
+  <div class="container-fluid">
+    {% block flash %}
+    {{ super() }}
+    {% endblock %}
+  </div>
+  <div class="container-fluid">
+    {% block toolbar %}
+    {{ super() }}
+    {% endblock %}
+  </div>
+  <div id="content" class="container">
+    <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
+      {% block primary %}
+      {{ super() }}
+      {% endblock %}
 
-            {% block secondary %}
-            {{ super() }}
-            {% endblock %}
-        </div>
+      {% block secondary %}
+      {{ super() }}
+      {% endblock %}
     </div>
+  </div>
 </div>
 {% endblock -%}
