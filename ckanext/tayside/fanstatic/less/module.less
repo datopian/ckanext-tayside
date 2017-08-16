@@ -1,93 +1,93 @@
 /* All modules */
 
 .module {
+  &:first-child {
+    .module-heading {
+      .module-heading;
+    }
+  }
+  div.module-content {
     &:first-child {
-        .module-heading {
-            .module-heading;
-        }
+      padding-top: inherit;
     }
-    div.module-content {
-        &:first-child {
-            padding-top: inherit;
-        }
-    }
+  }
 }
 
 .module-heading {
-    background-color: @color-neutral-light-2x;
-    border-radius: @grid-gutter-width/2;
-    border: none;
+  background-color: @color-neutral-light-2x;
+  border-radius: @grid-gutter-width/2;
+  border: none;
 }
 
 
 /* Search */
 
 .module-hero-search {
-    width: 35%;
-    margin: 0;
-    padding: 0;
-    .search-form {
-        border: none;
-        margin-bottom: 0;
+  width: 35%;
+  margin: 0;
+  padding: 0;
+  .search-form {
+    border: none;
+    margin-bottom: 0;
+  }
+  .search-input {
+    margin-bottom: 0;
+    input {
+      border-width: 3px;
+      border-color: @color-secondary;
+      &:focus {
+        border-color: @color-primary;
+      }
     }
-    .search-input {
-        margin-bottom: 0;
-        input {
-            border-width: 3px;
-            border-color: @color-secondary;
-            &:focus {
-                border-color: @color-primary;
-            }
-        }
-        button {
-            i {
-                color: @color-secondary;
-            }
-        }
+    button {
+      i {
+        color: @color-secondary;
+      }
     }
+  }
 }
 
 .search-form {
-    .search-input {
-        &.search-giant {
-            button {
-                margin-top: -@grid-gutter-width/2;
-            }
-        }
+  .search-input {
+    &.search-giant {
+      button {
+        margin-top: -@grid-gutter-width/2;
+      }
     }
+  }
 }
 
 
 /* Topics */
 
 .module-topics {
-    &:last-child {
-        margin-bottom: 0;
-    }
-    a {
-        color: @color-secondary;
-    }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  a {
+    color: @color-secondary;
+  }
 }
 
 .module-topics-list {
-    margin: 0;
-    list-style: none;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  .topic {
+    padding: @grid-gutter-width/2;
+    display: block;
+    font-weight: 700;
+  }
+  .topic-icon {}
+  .topic-title {
+    margin-top: @grid-gutter-width/3;
+    display: block;
+    text-transform: uppercase;
+  }
+  li {
+    max-width: @grid-gutter-width*4.2;
     text-align: center;
-    .topic {
-        padding: @grid-gutter-width/2;
-        display: block;
-        font-weight: 700;
-    }
-    .topic-icon {}
-    .topic-title {
-        margin-top: @grid-gutter-width/3;
-        display: block;
-        text-transform: uppercase;
-    }
-    li {
-        max-width: @grid-gutter-width*4.2;
-        text-align: center;
-        vertical-align: middle;
-        display: inline-block;
-    }
+    vertical-align: middle;
+    display: inline-block;
+  }
 }

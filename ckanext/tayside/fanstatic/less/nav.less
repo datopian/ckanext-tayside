@@ -1,40 +1,40 @@
 .nav-main {
-    background-color: @color-primary;
-    .nav-collapse {
-        .nav {
-            >li {
-                a {
-                    text-transform: uppercase;
-                    font-size: @baseFontSize + 2;
-                    color: @color-white;
-                    font-weight: 700;
-                }
-            }
-        }
-    }
+  background-color: @color-primary;
+  .nav-collapse {
     .nav {
-        margin-top: @grid-gutter-width/2;
-        margin-bottom: @grid-gutter-width/2;
+      >li {
         a {
-            color: @color-white;
-            margin: 0;
-            padding: @grid-gutter-width/4 @grid-gutter-width/2;
-            &:hover,
-            &:focus {
-                .nav-pills-active-bg-color;
-            }
+          text-transform: uppercase;
+          font-size: @baseFontSize + 2;
+          color: @color-white;
+          font-weight: 700;
         }
-        .active {
-            a {
-                .nav-pills-active-bg-color;
-            }
-        }
-        @media (min-width: @screen-desktop) {
-            >li {
-                &:not(:first-child) {
-                    margin-left: @grid-gutter-width/4;
-                }
-            }
-        }
+      }
     }
+  }
+  .nav {
+    margin-top: @grid-gutter-width/2;
+    margin-bottom: @grid-gutter-width/2;
+    a {
+      color: @color-white;
+      margin: 0;
+      padding: @grid-gutter-width/4 @grid-gutter-width/2;
+      &:hover,
+      &:focus {
+        .nav-pills-active-bg-color;
+      }
+    }
+    .active {
+      a {
+        .nav-pills-active-bg-color;
+      }
+    }
+    @media (min-width: @screen-desktop) {
+      >li {
+        &:not(:first-child) {
+          margin-left: @grid-gutter-width/4;
+        }
+      }
+    }
+  }
 }
