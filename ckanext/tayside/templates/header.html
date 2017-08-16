@@ -33,7 +33,11 @@
 
       <div class="pull-right">
         {% snippet 'snippets/twitter_follow_button.html' %}
-        {% block header_site_search %} {{ super() }} {% endblock %}
+        {% block header_site_search %}
+          {% if request.host_url != request.url[:-1] %}
+            {{ super() }}
+          {% endif %}
+        {% endblock %}
         <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
