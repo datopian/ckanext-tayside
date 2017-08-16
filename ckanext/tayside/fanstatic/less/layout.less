@@ -25,10 +25,26 @@ body {
 }
 
 .hero-search {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  .image-credit {
+    width: 99%;
+    display: block;
+    padding: @grid-gutter-width/4;
+    position: absolute;
+    bottom: 0;
+    color: @color-white;
+    text-align: right;
+    font-size: x-small;
+
+    a{
+      color: currentColor;
+      text-decoration: underline;
+    }
+  }
 }
 
 .hero-search-symbol {
