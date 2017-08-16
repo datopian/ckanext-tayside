@@ -1,11 +1,11 @@
 {% ckan_extends %}
 
 {% block footer_content %}
-{% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
-<ul class="inline list-wide">
-  <li><a href="#">{{ _('Cookies') }}</a></li>
-  <li><a href="#">{{ _('Code of Conduct') }}</a></li>
-  <li><a href="#">{{ _('Data Policy') }}</a></li>
-  <li><a href="{{ api_url }}">{{ _('CKAN API') }}</a></li>
-</ul>
+  {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
+  <ul class="inline list-wide">
+    <li><a href="#">{{ _('Cookies') }}</a></li>
+    <li><a href="#">{{ _('Code of Conduct') }}</a></li>
+    <li><a href="#">{{ _('Data Policy') }}</a></li>
+    <li><a href="{{ api_url }}">{{ _('CKAN API') }}</a></li>
+  </ul>
 {% endblock %}

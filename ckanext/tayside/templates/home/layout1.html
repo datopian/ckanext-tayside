@@ -6,20 +6,20 @@
     <ul class="module-topics-list">
       {% set groups = h.tayside_get_groups() %}
       {% for group in groups %}
-      {% set group_url = h.url_for(controller='group', action='read', id=group.name) %}
+        {% set group_url = h.url_for(controller='group', action='read', id=group.name) %}
 
-      {% if group.image_display_url %}
-      {% set group_image = group.image_display_url %}
-      {% else %}
-      {% set group_image = '/base/images/placeholder-group.png' %}
-      {% endif %}
+        {% if group.image_display_url %}
+          {% set group_image = group.image_display_url %}
+        {% else %}
+          {% set group_image = '/base/images/placeholder-group.png' %}
+        {% endif %}
 
-      <li>
-        <a href="{{ group_url }}" class="topic">
-          <img class="topic-icon" src="{{ group_image }}" alt="{{ group.title }}">
-          <span class="topic-title">{{ group.title }}</span>
-        </a>
-      </li>
+        <li>
+          <a href="{{ group_url }}" class="topic">
+            <img class="topic-icon" src="{{ group_image }}" alt="{{ group.title }}">
+            <span class="topic-title">{{ group.title }}</span>
+          </a>
+        </li>
       {% endfor %}
     </ul>
   </div>
