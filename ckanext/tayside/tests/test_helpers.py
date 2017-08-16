@@ -1,5 +1,7 @@
-from ckan.tests import helpers, factories
+from ckan.tests import helpers as test_helpers, factories
 from ckan import plugins
+
+from ckanext.tayside import helpers as tayside_helpers
 
 
 class ActionBase(object):
@@ -9,7 +11,7 @@ class ActionBase(object):
             plugins.load('tayside')
 
     def setup(self):
-        helpers.reset_db()
+        test_helpers.reset_db()
 
     @classmethod
     def teardown_class(self):
@@ -20,4 +22,16 @@ class ActionBase(object):
 class TestHelpers(ActionBase):
     def test_get_groups(self):
         group1 = factories.Group()
-        group1 = factories.Group()
+        group2 = factories.Group()
+
+        for i in range(1):
+            dataset = factories.Dataset(groups=[{'id': group1.get('id')}])
+
+        for i in range(3):
+            dataset = factories.Dataset(groups=[{'id': group2.get('id')}])
+
+        groups = tayside_helpers.get_groups()
+
+        assert groups[0].get('id') == group2.get('id')
+        assert groups[1].get('id') == group1.get('id')
+        assert groups[0].get('package_count') > groups[1].get('package_count')
