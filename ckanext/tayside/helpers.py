@@ -11,7 +11,6 @@ def get_groups():
 
     data_dict = {
         'sort': 'package_count',
-        'limit': 7,
         'all_fields': True
     }
     groups = _get_action('group_list', {}, data_dict)
