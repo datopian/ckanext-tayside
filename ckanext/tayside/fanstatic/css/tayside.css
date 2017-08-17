@@ -240,6 +240,9 @@ input[type="color"]:focus,
     margin-left: 7.5px;
   }
 }
+.nav-simple .nav-item .active {
+  border-radius: 30px 0 0 30px;
+}
 /* All modules */
 .module:first-child .module-heading {
   background-color: #e1e3e9;
@@ -253,6 +256,9 @@ input[type="color"]:focus,
   background-color: #e1e3e9;
   border-radius: 15px;
   border: none;
+}
+.module-resource {
+  margin-bottom: 30px;
 }
 /* Search */
 .module-hero-search {
@@ -428,7 +434,7 @@ input[type="color"]:focus,
 .control-order-by select {
   border-radius: 15px;
 }
-.search-form .search-input {
+.module-content .search-form .search-input {
   margin-bottom: 40px;
 }
 .search-giant {
