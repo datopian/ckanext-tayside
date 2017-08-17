@@ -433,4 +433,10 @@ input[type="color"]:focus,
   color: #6d778a;
   margin: 15px 0;
 }
+.js .image-upload input[type=file] {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
 /*# sourceMappingURL=tayside.css.map */

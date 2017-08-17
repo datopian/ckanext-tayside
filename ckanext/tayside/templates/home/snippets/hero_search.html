@@ -1,6 +1,14 @@
 {% set placeholder = _('Search (e.g. "Parking" or "Schools"') %}
 
-<img class="hero-search-symbol" src="http://127.0.0.1:5000/base/images/ckan-symbol-white.png" alt="logo">
+{% if app_globals.site_symbol_url %}
+  {% if not app_globals.site_symbol_url.startswith('http') %}
+    {% set site_symbol_url = h.url_for_static('uploads/admin/' + app_globals.site_symbol_url) %}
+  {% else %}
+    {% set site_symbol_url = app_globals.site_symbol_url %}
+  {% endif %}
+{% endif %}
+
+<img class="hero-search-symbol" {% if site_symbol_url %} src="{{ site_symbol_url }}" {% endif %}>
 <div class="module module-hero-search module-narrow module-shallow">
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
     <div class="search-input control-group search-giant">

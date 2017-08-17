@@ -53,7 +53,10 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             'clear_hero_image_upload': [ignore_missing, unicode],
             'hero_image_url': [ignore_missing, unicode],
             'hero_image_upload': [ignore_missing, unicode],
-            'hero_image_license_text': [ignore_missing, unicode]
+            'hero_image_license_text': [ignore_missing, unicode],
+            'site_symbol_url': [ignore_missing, unicode],
+            'site_symbol_upload': [ignore_missing, unicode],
+            'clear_site_symbol_upload': [ignore_missing, unicode]
         })
 
         return schema

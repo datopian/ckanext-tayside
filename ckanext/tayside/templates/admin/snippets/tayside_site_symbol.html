@@ -1,0 +1,17 @@
+{% import 'macros/form.html' as form %}
+
+{% set is_upload = data.site_symbol_url and not data.site_symbol_url.startswith('http') %}
+{% set is_url = data.site_symbol_url and data.site_symbol_url.startswith('http') %}
+{% set url_label = _('Site symbol') %}
+{% set upload_label = _('Site symbol') %}
+
+{{ form.image_upload(data,
+                     errors,
+                     is_upload_enabled=h.uploads_enabled(),
+                     is_url=is_url,
+                     is_upload=is_upload,
+                     url_label=url_label,
+                     upload_label=upload_label,
+                     field_url='site_symbol_url',
+                     field_upload='site_symbol_upload',
+                     field_clear='clear_site_symbol_upload') }}

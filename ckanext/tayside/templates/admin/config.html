@@ -1,3 +1,5 @@
+{% resource 'tayside/js/lib/rename-image-macro-id.js' %}
+
 {% ckan_extends %}
 
 {% import 'macros/form.html' as form %}
@@ -7,21 +9,9 @@
 
   {{ form.input('twitter_username', label=_('Twitter'), value=data.twitter_username, error=error, placeholder=_('Your Twitter username'), classes=['control-full']) }}
 
-  {% set is_upload = data.hero_image_url and not data.hero_image_url.startswith('http') %}
-  {% set is_url = data.hero_image_url and data.hero_image_url.startswith('http') %}
-  {% set url_label = _('Hero image URL') %}
-  {% set upload_label = _('Hero image') %}
+  {% snippet 'admin/snippets/tayside_hero_image.html', data=data, errors=errors %}
 
-  {{ form.image_upload(data,
-                       errors,
-                       is_upload_enabled=h.uploads_enabled(),
-                       is_url=is_url,
-                       is_upload=is_upload,
-                       url_label=url_label,
-                       upload_label=upload_label,
-                       field_url='hero_image_url',
-                       field_upload='hero_image_upload',
-                       field_clear='clear_hero_image_upload') }}
+  {{ form.markdown('hero_image_license_text', label=_('Attribution'), placeholder=_('Attribution and licensing information for background image'), value=data.hero_image_license_text) }}
 
-    {{ form.markdown('hero_image_license_text', label=_('Attribution'), placeholder=_('Attribution and licensing information for background image'), value=data.hero_image_license_text) }}
+  {% snippet 'admin/snippets/tayside_site_symbol.html', data=data, errors=errors %}
 {% endblock %}
