@@ -31,9 +31,12 @@ body {
   background-color: #78388e;
 }
 .hero {
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-color: #78388e;
+}
+.hero-default-background {
+  background-size: auto;
 }
 .hero-search {
   position: relative;
@@ -143,8 +146,22 @@ input[type="color"]:focus,
 .masthead a {
   color: #168198;
 }
+.masthead .logo {
+  display: inline-block;
+}
+@media (max-width: 768px) {
+  .masthead .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 .masthead .btn-navbar {
   background-color: #6d778a;
+}
+.masthead .btn-navbar,
+.masthead .btn-navbar:hover,
+.masthead .btn-navbar:focus {
+  margin-top: 0;
 }
 .masthead .btn-navbar:hover,
 .masthead .btn-navbar:focus {
@@ -158,8 +175,16 @@ input[type="color"]:focus,
   box-shadow: none;
 }
 .masthead .twitter {
-  margin: 3px 30px 0;
-  display: inline-block;
+  display: none;
+}
+@media (min-width: 1200px) {
+  .masthead .twitter {
+    display: inline-block;
+    margin-top: 3px;
+  }
+  .masthead .twitter + .site-search {
+    margin-left: 30px;
+  }
 }
 .masthead .twitter a {
   color: #1DA1F2;
@@ -168,6 +193,12 @@ input[type="color"]:focus,
   position: relative;
   bottom: 3px;
   margin-right: 5px;
+}
+.header-image {
+  max-width: 270px;
+}
+.header-text-logo h1 {
+  margin: 0;
 }
 .btn {
   background-image: none;
@@ -419,6 +450,11 @@ input[type="color"]:focus,
   align-items: center;
   justify-content: center;
   margin: 30px 0;
+}
+@media (max-width: 1200px) {
+  .organization-logos {
+    flex-direction: column;
+  }
 }
 .organization-logos figure {
   margin: 15px 30px;
