@@ -11,7 +11,7 @@
 
   {% snippet 'admin/snippets/tayside_hero_image.html', data=data, errors=errors %}
 
-  {{ form.markdown('hero_image_license_text', label=_('Attribution'), placeholder=_('Attribution and licensing information for background image'), value=data.hero_image_license_text) }}
+  {{ form.markdown('hero_image_license_text', label=_('Attribution'), placeholder=_('Attribution and licensing information for Hero image'), value=data.hero_image_license_text) }}
 
   {% snippet 'admin/snippets/tayside_site_symbol.html', data=data, errors=errors %}
 {% endblock %}
