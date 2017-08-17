@@ -46,13 +46,12 @@ body {
   flex-direction: column;
 }
 .hero-search .image-credit {
-  width: 99%;
+  text-align: center;
   display: block;
   padding: 7.5px;
   position: absolute;
   bottom: 0;
   color: #ffffff;
-  text-align: right;
   font-size: x-small;
 }
 .hero-search .image-credit a {
@@ -257,9 +256,19 @@ input[type="color"]:focus,
 }
 /* Search */
 .module-hero-search {
-  width: 35%;
+  width: 50%;
   margin: 0;
   padding: 0;
+}
+@media (min-width: 1200px) {
+  .module-hero-search {
+    width: 35%;
+  }
+}
+@media (max-width: 768px) {
+  .module-hero-search {
+    width: 80%;
+  }
 }
 .module-hero-search .search-form {
   border: none;
