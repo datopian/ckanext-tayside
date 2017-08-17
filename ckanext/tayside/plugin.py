@@ -52,7 +52,8 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             'twitter_username': [ignore_missing, unicode],
             'clear_hero_image_upload': [ignore_missing, unicode],
             'hero_image_url': [ignore_missing, unicode],
-            'hero_image_upload': [ignore_missing, unicode]
+            'hero_image_upload': [ignore_missing, unicode],
+            'hero_image_license_text': [ignore_missing, unicode]
         })
 
         return schema
