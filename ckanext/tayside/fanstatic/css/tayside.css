@@ -246,6 +246,9 @@ input[type="color"]:focus,
   border-radius: 15px;
   border: none;
 }
+.module:first-child .module-heading .fa:last-child {
+  margin-right: 3px;
+}
 .module div.module-content:first-child {
   padding-top: inherit;
 }
@@ -483,5 +486,10 @@ input[type="color"]:focus,
   position: absolute;
   z-index: 1;
   opacity: 0;
+}
+.nav-tabs .fa:last-child,
+.module-heading .fa:last-child,
+.btn .fa:last-child {
+  margin-right: 3px;
 }
 /*# sourceMappingURL=tayside.css.map */
