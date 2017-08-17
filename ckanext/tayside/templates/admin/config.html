@@ -22,4 +22,6 @@
                        field_url='hero_image_url',
                        field_upload='hero_image_upload',
                        field_clear='clear_hero_image_upload') }}
+
+    {{ form.markdown('hero_image_license_text', label=_('Attribution'), placeholder=_('Attribution and licensing information for background image'), value=data.hero_image_license_text) }}
 {% endblock %}
