@@ -23,7 +23,13 @@
 /* Search */
 
 .module-hero-search {
-  width: 35%;
+  width: 50%;
+  @media (min-width: @screen-desktop){
+    width: 35%;
+  }
+  @media (max-width: @screen-tablet){
+    width: 80%;
+  }
   margin: 0;
   padding: 0;
   .search-form {
