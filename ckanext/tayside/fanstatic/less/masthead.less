@@ -32,7 +32,21 @@
   a {
     color: @color-primary;
   }
+  .logo {
+    display: inline-block;
+  }
+  @media (max-width: @screen-tablet) {
+    .container-fluid {
+      padding-left: @grid-gutter-width - 10;
+      padding-right: @grid-gutter-width - 10;
+    }
+  }
   .btn-navbar {
+    &,
+    &:hover,
+    &:focus {
+      margin-top: 0;
+    }
     background-color: @color-neutral;
     &:hover,
     &:focus {
@@ -43,8 +57,14 @@
     .inputs-style;
   }
   .twitter {
-    margin: 3px @grid-gutter-width 0;
-    display: inline-block;
+    display: none;
+    @media (min-width: @screen-desktop) {
+      display: inline-block;
+      margin-top: 3px;
+      &+.site-search {
+        margin-left: @grid-gutter-width;
+      }
+    }
     a {
       color: #1DA1F2;
     }
@@ -53,5 +73,15 @@
       bottom: 3px;
       margin-right: @grid-gutter-width/6;
     }
+  }
+}
+
+.header-image {
+  max-width: @grid-gutter-width*9;
+}
+
+.header-text-logo {
+  h1 {
+    margin: 0;
   }
 }

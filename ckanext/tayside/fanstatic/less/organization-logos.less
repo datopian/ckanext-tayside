@@ -1,5 +1,8 @@
 .organization-logos {
   display: flex;
+  @media (max-width: @screen-desktop) {
+    flex-direction: column;
+  }
   align-items: center;
   justify-content: center;
   margin: @grid-gutter-width 0;
