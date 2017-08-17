@@ -5,5 +5,21 @@
 {% block admin_form %}
   {{ super() }}
 
-  {{ form.input('twitter_username', label=_('Twitter username'), value=data.twitter_username, error=error) }}
+  {{ form.input('twitter_username', label=_('Twitter'), value=data.twitter_username, error=error, placeholder=_('Your Twitter username'), classes=['control-full']) }}
+
+  {% set is_upload = data.hero_image_url and not data.hero_image_url.startswith('http') %}
+  {% set is_url = data.hero_image_url and data.hero_image_url.startswith('http') %}
+  {% set url_label = _('Hero image URL') %}
+  {% set upload_label = _('Hero image') %}
+
+  {{ form.image_upload(data,
+                       errors,
+                       is_upload_enabled=h.uploads_enabled(),
+                       is_url=is_url,
+                       is_upload=is_upload,
+                       url_label=url_label,
+                       upload_label=upload_label,
+                       field_url='hero_image_url',
+                       field_upload='hero_image_upload',
+                       field_clear='clear_hero_image_upload') }}
 {% endblock %}

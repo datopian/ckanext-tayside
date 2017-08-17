@@ -1,4 +1,19 @@
-<div role="main" class="hero hero-search">
+{% if app_globals.hero_image_url %}
+  {% if not app_globals.hero_image_url.startswith('http') %}
+    {% set hero_image_url = h.url_for_static('uploads/admin/' + app_globals.hero_image_url) %}
+  {% else %}
+    {% set hero_image_url = app_globals.hero_image_url %}
+  {% endif %}
+{% endif %}
+
+<div role="main"
+  {% if hero_image_url %}
+    class="hero hero-search"
+    style="background: url({{ hero_image_url }})"
+  {% else %}
+    class="hero hero-search hero-default-background"
+  {% endif %}
+>
   {% block search %} {% snippet 'home/snippets/hero_search.html' %} {% endblock %}
 </div>
 <div class="container">

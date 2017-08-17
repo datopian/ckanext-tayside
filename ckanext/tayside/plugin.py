@@ -2,6 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
 from ckanext.tayside import helpers
+import ckanext.tayside.logic.action.update as update_actions
 
 
 class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
@@ -10,6 +11,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm, inherit=True)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IConfigurer)
+    plugins.implements(plugins.IActions)
 
     # IConfigurer
 
@@ -48,6 +50,16 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
         schema.update({
             'twitter_username': [ignore_missing, unicode],
+            'clear_hero_image_upload': [ignore_missing, unicode],
+            'hero_image_url': [ignore_missing, unicode],
+            'hero_image_upload': [ignore_missing, unicode]
         })
 
         return schema
+
+    # IActions
+
+    def get_actions(self):
+        return {
+            'config_option_update': update_actions.config_option_update
+        }
