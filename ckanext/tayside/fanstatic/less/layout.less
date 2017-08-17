@@ -19,9 +19,13 @@ body {
 }
 
 .hero {
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-color: @color-secondary;
+}
+
+.hero-default-background {
+  background-size: auto;
 }
 
 .hero-search {
@@ -39,8 +43,7 @@ body {
     color: @color-white;
     text-align: right;
     font-size: x-small;
-
-    a{
+    a {
       color: currentColor;
       text-decoration: underline;
     }
