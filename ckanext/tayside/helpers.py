@@ -14,5 +14,6 @@ def get_groups():
         'all_fields': True
     }
     groups = _get_action('group_list', {}, data_dict)
+    groups = [group for group in groups if group.get('package_count') > 0]
 
     return groups
