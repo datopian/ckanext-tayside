@@ -19,15 +19,23 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'tayside')
+        toolkit.add_ckan_admin_tab(config_, 'ckanext_tayside_footer_logos',
+                                   'Footer logos')
 
     # IRoutes
 
     def before_map(self, map):
         package_controller =\
             'ckanext.tayside.controllers.package:PackageController'
+        admin_controller =\
+            'ckanext.tayside.controllers.admin:AdminController'
 
         map.connect('/dataset/new', controller=package_controller,
                     action='create_metadata_package')
+        map.connect('ckanext_tayside_footer_logos',
+                    '/ckan-admin/manage_footer_logos',
+                    controller=admin_controller, action='manage_footer_logos',
+                    ckan_icon='wrench')
 
         return map
 
