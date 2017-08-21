@@ -48,24 +48,35 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
     def get_helpers(self):
         return {
-            'tayside_get_groups': helpers.get_groups
+            'tayside_get_groups': helpers.get_groups,
+            'tayside_get_footer_logos': helpers.get_footer_logos,
         }
 
     # IConfigurer
 
     def update_config_schema(self, schema):
         ignore_missing = toolkit.get_validator('ignore_missing')
+        validators = [ignore_missing, unicode]
 
         schema.update({
-            'twitter_username': [ignore_missing, unicode],
-            'clear_hero_image_upload': [ignore_missing, unicode],
-            'hero_image_url': [ignore_missing, unicode],
-            'hero_image_upload': [ignore_missing, unicode],
-            'hero_image_license_text': [ignore_missing, unicode],
-            'site_symbol_url': [ignore_missing, unicode],
-            'site_symbol_upload': [ignore_missing, unicode],
-            'clear_site_symbol_upload': [ignore_missing, unicode]
+            'twitter_username': validators,
+            'clear_hero_image_upload': validators,
+            'hero_image_url': validators,
+            'hero_image_upload': validators,
+            'hero_image_license_text': validators,
+            'site_symbol_url': validators,
+            'site_symbol_upload': validators,
+            'clear_site_symbol_upload': validators
         })
+
+        for i in range(1, 6):
+            schema.update({'footer_logo_{0}_image_url'.format(i): validators})
+            schema.update({'footer_logo_{0}_link_url'.format(i): validators})
+            schema.update({'footer_logo_{0}_text'.format(i): validators})
+            schema.update({'footer_logo_{0}_upload'.format(i): validators})
+            schema.update({
+                'clear_footer_logo_{0}_upload'.format(i): validators
+            })
 
         return schema
 

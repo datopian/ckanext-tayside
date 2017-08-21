@@ -1,7 +1,39 @@
 {% extends 'admin/base.html' %}
 
-{% block primary_content_inner %}
+{% import 'macros/form.html' as form %}
 
+{% block primary_content_inner %}
+  {{ form.errors(error_summary) }}
+
+  <form method="post" class="form-horizontal" enctype="multipart/form-data">
+    {% for n in range(1, 6) %}
+      <fieldset>
+        <legend>Logo {{ n | string }}</legend>
+        {% set is_upload = data.get('footer_logo_' + n | string + '_image_url') and not data.get('footer_logo_' + n | string + '_image_url').startswith('http') %}
+        {% set is_url = data.get('footer_logo_' + n | string + '_image_url') and data.get('footer_logo_' + n | string + '_image_url').startswith('http') %}
+        {% set url_label = _('Logo image') %}
+        {% set upload_label = _('Logo image') %}
+
+        {% snippet 'admin/snippets/tayside_image_upload.html',
+                    data=data,
+                    errors=errors,
+                    is_upload_enabled=h.uploads_enabled(),
+                    is_url=is_url,
+                    is_upload=is_upload,
+                    url_label=url_label,
+                    upload_label=upload_label,
+                    field_url='footer_logo_' + n | string + '_image_url',
+                    field_upload='footer_logo_' + n | string + '_upload',
+                    field_clear='clear_footer_logo_' + n | string + '_upload' %}
+
+        {{ form.input('footer_logo_' + n | string + '_link_url', label=_('Logo URL'), value=data.get('footer_logo_' + n | string + '_link_url'), error=errors.get('footer_logo_' + n | string + '_link_url'), placeholder=_('External link for logo'), classes=['control-full']) }}
+        {{ form.input('footer_logo_' + n | string + '_text', label=_('Logo text'), value=data.get('footer_logo_' + n | string + '_text'), error=errors.get('footer_logo_' + n | string + '_text'), placeholder=_('Text under logo'), classes=['control-full']) }}
+      </fieldset>
+    {% endfor %}
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" name="save">{{ _('Save') }}</button>
+    </div>
+  </form>
 {% endblock %}
 
 {% block secondary_content %}
