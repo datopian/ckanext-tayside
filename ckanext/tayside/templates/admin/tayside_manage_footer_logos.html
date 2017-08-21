@@ -8,7 +8,7 @@
   <form method="post" class="form-horizontal" enctype="multipart/form-data">
     {% for n in range(1, 6) %}
       <fieldset>
-        <legend>Logo {{ n | string }}</legend>
+        <legend>{{ _('Organization Link')}} {{ n | string }}</legend>
         {% set is_upload = data.get('footer_logo_' + n | string + '_image_url') and not data.get('footer_logo_' + n | string + '_image_url').startswith('http') %}
         {% set is_url = data.get('footer_logo_' + n | string + '_image_url') and data.get('footer_logo_' + n | string + '_image_url').startswith('http') %}
         {% set url_label = _('Logo image') %}
@@ -26,8 +26,8 @@
                     field_upload='footer_logo_' + n | string + '_upload',
                     field_clear='clear_footer_logo_' + n | string + '_upload' %}
 
-        {{ form.input('footer_logo_' + n | string + '_link_url', label=_('Logo URL'), value=data.get('footer_logo_' + n | string + '_link_url'), error=errors.get('footer_logo_' + n | string + '_link_url'), placeholder=_('External link for logo'), classes=['control-full']) }}
-        {{ form.input('footer_logo_' + n | string + '_text', label=_('Logo text'), value=data.get('footer_logo_' + n | string + '_text'), error=errors.get('footer_logo_' + n | string + '_text'), placeholder=_('Text under logo'), classes=['control-full']) }}
+        {{ form.input('footer_logo_' + n | string + '_link_url', label=_('Anchor URL'), value=data.get('footer_logo_' + n | string + '_link_url'), error=errors.get('footer_logo_' + n | string + '_link_url'), placeholder=_('External link to which the logo anchor points'), classes=['control-full']) }}
+        {{ form.input('footer_logo_' + n | string + '_text', label=_('Title'), value=data.get('footer_logo_' + n | string + '_text'), error=errors.get('footer_logo_' + n | string + '_text'), placeholder=_('Logo title'), classes=['control-full']) }}
       </fieldset>
     {% endfor %}
     <div class="form-actions">
@@ -40,11 +40,11 @@
   <div class="module module-narrow module-shallow">
     <h2 class="module-heading">
       <i class="fa fa-info-circle"></i>
-      {{ _('Manage footer logos') }}
+      {{ _('Organization Links') }}
     </h2>
     <div class="module-content">
       {% trans %}
-        <p>Here should be some info text on managing footer logos.</p>
+        <p>Manage links to relevant organizations, shown as logo images in the footer and included on all pages.</p>
       {% endtrans %}
     </div>
   </div>
