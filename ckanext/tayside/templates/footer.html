@@ -1,28 +1,6 @@
 {% ckan_extends %}
 
 {% block footer_content %}
-  {% set logos = h.tayside_get_footer_logos() %}
-
-  {% if logos|length > 0 %}
-    <div class="organization-logos">
-      {% for logo in logos %}
-        {% if not logo.logo_image_url.startswith('http') %}
-          {% set logo_image_url = h.url_for_static('uploads/admin/' + logo.logo_image_url) %}
-        {% else %}
-          {% set logo_image_url = logo.logo_image_url %}
-        {% endif %}
-
-        <a href="{{ logo.logo_link_url }}" target="_blank">
-          <figure>
-            <img src="{{ logo_image_url }}">
-            <figcaption>{{ logo.logo_text }}</figcaption>
-          </figure>
-        </a>
-      {% endfor %}
-    </div>
-    <!-- .organization-logos -->
-  {% endif %}
-
   {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
   <ul class="inline list-wide">
     <li><a href="#">{{ _('Cookies') }}</a></li>
