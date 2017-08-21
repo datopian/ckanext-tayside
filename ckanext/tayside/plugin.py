@@ -20,7 +20,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'tayside')
         toolkit.add_ckan_admin_tab(config_, 'ckanext_tayside_footer_logos',
-                                   'Footer logos')
+                                   'Organization Links')
 
     # IRoutes
 
@@ -35,7 +35,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         map.connect('ckanext_tayside_footer_logos',
                     '/ckan-admin/manage_footer_logos',
                     controller=admin_controller, action='manage_footer_logos',
-                    ckan_icon='wrench')
+                    ckan_icon='building-o')
 
         return map
 
