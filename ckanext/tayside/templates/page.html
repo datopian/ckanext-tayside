@@ -4,31 +4,33 @@
   {% block maintag %}
     <div role="main">
   {% endblock %}
-  <div class="container-fluid">
-    {% block toolbar %}
-    {{ super() }}
-    {% endblock %}
-  </div>
-  <div class="container">
-    {% block flash %}
+  {% block main_content %}
+    <div class="container-fluid">
+      {% block toolbar %}
       {{ super() }}
-    {% endblock %}
-  </div>
-  <div id="content" class="container">
-    <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
-      {% block pre_primary %}
-        {{ super() }}
       {% endblock %}
-
-      {% block primary %}
-        {{ super() }}
-      {% endblock %}
-
-      {% block secondary %}
+    </div>
+    <div class="container">
+      {% block flash %}
         {{ super() }}
       {% endblock %}
     </div>
-  </div>
+    <div id="content" class="container">
+      <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
+        {% block pre_primary %}
+          {{ super() }}
+        {% endblock %}
+
+        {% block primary %}
+          {{ super() }}
+        {% endblock %}
+
+        {% block secondary %}
+          {{ super() }}
+        {% endblock %}
+      </div>
+    </div>
+  {% endblock %}
 </div>
 {% endblock -%}
 
@@ -56,6 +58,6 @@
     </div>
     <!-- .organization-logos -->
   {% endif %}
-  
+
   {{ super() }}
 {% endblock -%}
