@@ -1,5 +1,6 @@
 from ckan.tests import helpers as test_helpers, factories
 from ckan import plugins
+from ckan.common import config
 
 from ckanext.tayside import helpers as tayside_helpers
 
@@ -35,3 +36,18 @@ class TestHelpers(ActionBase):
         assert groups[0].get('id') == group2.get('id')
         assert groups[1].get('id') == group1.get('id')
         assert groups[0].get('package_count') > groups[1].get('package_count')
+
+    def test_get_footer_logos(self):
+        config['footer_logo_1_image_url'] = 'http://example.com/image.png'
+        config['footer_logo_1_link_url'] = 'http://google.com'
+        config['footer_logo_1_text'] = 'some text'
+
+        logos = tayside_helpers.get_footer_logos()
+
+        assert len(logos) == 1
+        assert logos[0].get('logo_image_url') ==\
+            config['footer_logo_1_image_url']
+        assert logos[0].get('logo_link_url') ==\
+            config['footer_logo_1_link_url']
+        assert logos[0].get('logo_text') ==\
+            config['footer_logo_1_text']
