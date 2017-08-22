@@ -17,6 +17,10 @@
   border-color: #168198;
   box-shadow: none;
 }
+.marked-filter-border-radius {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
 body {
   background: #ffffff;
   font-family: 'Open Sans', sans-serif;
@@ -253,7 +257,13 @@ input[type="color"]:focus,
   margin-right: 3px;
 }
 .module div.module-content:first-child {
-  padding-top: inherit;
+  padding-top: 0;
+}
+.module-shallow .module-content:first-child {
+  padding-top: 0;
+}
+.context-info .module-content:first-child {
+  padding-top: 0;
 }
 .module-heading {
   background-color: #e1e3e9;
@@ -262,6 +272,14 @@ input[type="color"]:focus,
 }
 .module-resource {
   margin-bottom: 30px;
+}
+.module-narrow .nav-item > a {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.module-narrow .nav-aside li a {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 /* Search */
 .module-hero-search {
@@ -326,6 +344,9 @@ input[type="color"]:focus,
   text-align: center;
   vertical-align: middle;
   display: inline-block;
+}
+.span9 div.module-content {
+  padding-left: 25px;
 }
 .toolbar .breadcrumb {
   font-size: 14px;
@@ -496,5 +517,11 @@ input[type="color"]:focus,
 .module-heading .fa:last-child,
 .btn .fa:last-child {
   margin-right: 3px;
+}
+.media-grid {
+  margin: 0;
+}
+.media-item {
+  width: 171px;
 }
 /*# sourceMappingURL=tayside.css.map */
