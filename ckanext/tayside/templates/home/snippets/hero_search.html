@@ -8,7 +8,9 @@
   {% endif %}
 {% endif %}
 
-<img class="hero-search-symbol" {% if site_symbol_url %} src="{{ site_symbol_url }}" {% endif %}>
+{% if site_symbol_url %}
+  <img class="hero-search-symbol" src="{{ site_symbol_url }}" />
+{% endif %}
 <div class="module module-hero-search module-narrow module-shallow">
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
     <div class="search-input control-group search-giant">
