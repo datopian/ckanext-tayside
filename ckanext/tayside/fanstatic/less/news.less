@@ -21,8 +21,11 @@
   flex-direction: column;
   justify-content: flex-start;
   color: @color-neutral-dark;
-  min-height: @grid-gutter-width*12;
+  @media (min-width: @screen-tablet) {
+    min-height: @grid-gutter-width*12;
+  }
   margin: (@grid-gutter-width - 10) 0 @grid-gutter-width;
+  border: 1px solid @color-neutral-light-2x;
   transition: 200ms padding-top ease-in-out 20ms;
   &:hover,
   &:focus {
@@ -58,6 +61,7 @@
   max-height: @grid-gutter-width*5;
   overflow: hidden;
   img {
+    min-width: 100%;
     max-width: 100%;
   }
 }
