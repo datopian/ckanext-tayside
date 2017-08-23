@@ -18,45 +18,13 @@ body {
   }
 }
 
-.hero {
-  background-size: cover;
-  background-position: center;
-  background-color: @color-secondary;
-}
-
-.hero-default-background {
-  background-size: auto;
-}
-
-.hero-search {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  .image-credit {
-    text-align: center;
-    display: block;
-    padding: @grid-gutter-width/4;
-    position: absolute;
-    bottom: -10px;
-    color: @color-white;
-    font-size: x-small;
-    a {
-      color: currentColor;
-      text-decoration: underline;
-    }
-  }
-}
-
-.hero-search-symbol {
-  max-width: @grid-gutter-width*4;
-  margin: 0 @grid-gutter-width @grid-gutter-width/2; // .css-filter(invert(100%));
-}
-
 .wrapper {
   border: none;
   box-shadow: none;
+
+  @media (max-width: @screen-tablet){
+    margin: 0;
+  }
 }
 
 [role=main],
