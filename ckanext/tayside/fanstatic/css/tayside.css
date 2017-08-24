@@ -21,6 +21,9 @@
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
+.flex {
+  display: flex;
+}
 .hero {
   background-size: cover;
   background-position: center;
@@ -80,6 +83,11 @@ body {
 [role=main]:not(.hero),
 .main:not(.hero) {
   background: #ffffff;
+}
+/* Required for IE 11 because of this bug: https://goo.gl/LdrTn4 */
+_:-ms-fullscreen,
+:root [role=main].hero-search {
+  height: 350px;
 }
 #content .wrapper {
   background: transparent;
