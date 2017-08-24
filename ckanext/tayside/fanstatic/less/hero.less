@@ -1,0 +1,34 @@
+.hero {
+  background-size: cover;
+  background-position: center;
+  background-color: @color-secondary;
+  @media (max-width: @screen-tablet){
+    background-image: url("../../../../base/images/background-tile.png");
+  }
+}
+
+.hero-search {
+  .flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  .image-credit {
+    position: absolute;
+    text-align: center;
+    display: block;
+    padding: @grid-gutter-width/4;
+    bottom: -10px;
+    color: @color-white;
+    font-size: x-small;
+    a {
+      color: currentColor;
+      text-decoration: underline;
+    }
+  }
+}
+
+.hero-search-symbol {
+  max-width: @grid-gutter-width*4;
+  margin: 0 @grid-gutter-width @grid-gutter-width/2;
+}

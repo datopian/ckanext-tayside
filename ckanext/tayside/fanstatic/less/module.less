@@ -18,6 +18,9 @@
     &:first-child {
       padding-top: 0;
     }
+    &:last-child {
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -33,6 +36,7 @@
   background-color: @color-neutral-light-2x;
   border-radius: @grid-gutter-width/2;
   border: none;
+  overflow: auto;
 }
 
 .module-resource {
@@ -64,7 +68,9 @@
   @media (max-width: @screen-tablet) {
     width: 80%;
   }
-  margin: 0;
+  &:last-child{
+    margin: 0;
+  }
   padding: 0;
   .search-form {
     border: none;
