@@ -41,41 +41,33 @@
 </div>
 <div role="main">
   <div class="container">
-    <div class="news">
-      <div class="news-header">
-        <h3 class="news-header-title">{{ _('In the News') }}</h3>
-        <a class="btn btn-small btn-news-archive" href="#">{{ _('News Аrchive') }}</a>
-      </div>
-      <div class="row">
-        <div class="span4">
-          <a href="#" class="news-item">
-            <figure class="news-item-photo">
-              <img src="/base/images/background-tile.png" alt="">
-            </figure>
-            <span class="news-item-title">Praesent consectetur vulputate dolor</span>
-            <span class="news-item-description">Quisque eleifend nulla et fringilla blandit. Vestibulum pretium mi nisi. Pellentesque aliquet vel felis consectetur egestas.</span>
-          </a>
+    {% set news = h.get_recent_blog_posts(3) %}
+
+    {% if news %}
+      <div class="news">
+        <div class="news-header">
+          <h3 class="news-header-title">{{ _('In the News') }}</h3>
+          {% set news_url = h.url(controller='ckanext.pages.controller:PagesController', action='blog_index') %}
+          <a class="btn btn-small btn-news-archive" href="{{ news_url }}">{{ _('News Аrchive') }}</a>
         </div>
-        <div class="span4">
-          <a href="#" class="news-item">
-            <figure class="news-item-photo">
-              <img src="http://www.pkc.gov.uk/media/40102/Mecanoo-City-Hall/article-feature/city_hall" alt="">
-            </figure>
-            <span class="news-item-title">Quisque ullamcorper faucibus quam</span>
-            <span class="news-item-description">Nam nec mauris est. Cras euismod massa leo, vitae placerat nibh tincidunt quis. Nullam dignissim ipsum vehicula dapibus cursus. Donec bibendum nibh nibh. Sed lectus nibh, dignissim sed erat at, rutrum vestibulum sem.</span>
-          </a>
-        </div>
-        <div class="span4">
-          <a href="#" class="news-item">
-            <figure class="news-item-photo">
-              <img src="http://www.pkc.gov.uk/media/40112/City-of-Perth-Salute/article-feature/Perth_salute_Feature_CLIENT" alt="">
-            </figure>
-            <span class="news-item-title">Aliquam sit amet vulputate turpis, at interdum justo</span>
-            <span class="news-item-description">Phasellus laoreet elit tellus, et posuere urna tincidunt at. Integer volutpat efficitur enim, ac interdum lacus luctus non. Vivamus molestie, purus eget maximus rutrum, augue justo tristique velit, at dignissim massa magna id tellus.</span>
-          </a>
+        <div class="row">
+          {% for article in news %}
+            <div class="span4">
+              {% set article_url = h.url_for(controller='ckanext.pages.controller:PagesController', action='blog_show', page='/' + article.name) %}
+              <a href="{{ article_url }}" class="news-item">
+                {% if article.image %}
+                  <figure class="news-item-photo">
+                    <img src="{{ article.image }}">
+                  </figure>
+                {% endif %}
+                <span class="news-item-title">{{ article.title or article.name }}</span>
+                <span class="news-item-description">{{ h.markdown_extract(article.content) }}</span>
+              </a>
+            </div>
+          {% endfor %}
         </div>
       </div>
-    </div>
-    <!-- .news -->
+      <!-- .news -->
+    {% endif %}
   </div>
 </div>
