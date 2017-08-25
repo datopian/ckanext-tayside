@@ -48,6 +48,14 @@
     >a {
       .marked-filter-border-radius;
     }
+    &.active{
+      a{
+        &:hover{
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
   }
   .nav-aside {
     li {
@@ -68,7 +76,7 @@
   @media (max-width: @screen-tablet) {
     width: 80%;
   }
-  &:last-child{
+  &:last-child {
     margin: 0;
   }
   padding: 0;
