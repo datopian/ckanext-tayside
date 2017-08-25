@@ -12,6 +12,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
 
@@ -86,3 +87,16 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         return {
             'config_option_update': update_actions.config_option_update
         }
+
+    # IPackageController
+
+    def before_search(self, search_params):
+        fq = search_params.get('fq', '')
+
+        if 'dataset_type:dataset' in fq:
+            fq = fq.replace('dataset_type:dataset',
+                            'dataset_type: (dataset OR '
+                            'metadata-only)')
+            search_params.update({'fq': fq})
+
+        return search_params
