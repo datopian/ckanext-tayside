@@ -40,4 +40,11 @@ echo "Moving test.ini into a subdir..."
 mkdir subdir
 mv test.ini subdir
 
+echo "Installing ckanext-googleanalytics and its requirements..."
+git clone https://github.com/ckan/ckanext-googleanalytics
+cd ckanext-googleanalytics
+python setup.py develop
+pip install -r requirements.txt
+cd -
+
 echo "travis-build.bash is done."
