@@ -109,10 +109,8 @@ class LoadAnalytics(CkanCommand):
 
                 # Reset filters for next batch.
                 params.update({'filters': 'ga:eventAction==ResourceDownload;'})
-                print len(resources)
-                print 'results', results
 
-                for row in results.get('rows'):
+                if results.get('rows'):
                     resources_downloads.append({
                         'resource_id': row[1],
                         'total_downloads': int(row[2])
@@ -122,10 +120,11 @@ class LoadAnalytics(CkanCommand):
         if len(resources) < 75:
             results = self.service.data().ga().get(**params).execute()
 
-            for row in results.get('rows'):
-                resources_downloads.append({
-                    'resource_id': row[1],
-                    'total_downloads': int(row[2])
-                })
+            if results.get('rows'):
+                for row in results.get('rows'):
+                    resources_downloads.append({
+                        'resource_id': row[1],
+                        'total_downloads': int(row[2])
+                    })
 
         return resources_downloads
