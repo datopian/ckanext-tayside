@@ -99,12 +99,31 @@ class LoadAnalytics(CkanCommand):
 
             params.update({'filters': params.get('filters') + new_filter})
 
-        results = self.service.data().ga().get(**params).execute()
+            # Since there is a hard limit of 4KB for a URL, we must split
+            # getting data in batches of 75 resources per batch.
+            if (idx + 1) % 75 == 0:
 
-        for row in results.get('rows'):
-            resources_downloads.append({
-                'resource_id': row[1],
-                'total_downloads': int(row[2])
-            })
+                # Remove the comma from the end
+                params.update({'filters': params.get('filters')[:-1]})
+                results = self.service.data().ga().get(**params).execute()
+
+                # Reset filters for next batch.
+                params.update({'filters': 'ga:eventAction==ResourceDownload;'})
+
+                for row in results.get('rows'):
+                    resources_downloads.append({
+                        'resource_id': row[1],
+                        'total_downloads': int(row[2])
+                    })
+
+        # If there are less than 75 resources then query all.
+        if len(resources) < 75:
+            results = self.service.data().ga().get(**params).execute()
+
+            for row in results.get('rows'):
+                resources_downloads.append({
+                    'resource_id': row[1],
+                    'total_downloads': int(row[2])
+                })
 
         return resources_downloads
