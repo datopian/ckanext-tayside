@@ -109,6 +109,8 @@ class LoadAnalytics(CkanCommand):
 
                 # Reset filters for next batch.
                 params.update({'filters': 'ga:eventAction==ResourceDownload;'})
+                print len(resources)
+                print 'results', results
 
                 for row in results.get('rows'):
                     resources_downloads.append({
