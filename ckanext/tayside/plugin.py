@@ -10,7 +10,6 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IDatasetForm, inherit=True)
     plugins.implements(plugins.ITemplateHelpers)
-    plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IPackageController, inherit=True)
 
@@ -51,6 +50,9 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         return {
             'tayside_get_groups': helpers.get_groups,
             'tayside_get_footer_logos': helpers.get_footer_logos,
+            'tayside_resource_total_views': helpers.resource_total_views,
+            'tayside_get_downloads_for_resources':
+            helpers.get_downloads_for_resources,
         }
 
     # IConfigurer

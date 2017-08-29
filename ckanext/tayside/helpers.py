@@ -2,6 +2,8 @@ from ckan import model
 from ckan.plugins import toolkit
 from ckan.common import config
 
+from ckanext.tayside.model import get_downloads
+
 
 def _get_action(action, context_dict, data_dict):
     return toolkit.get_action(action)(context_dict, data_dict)
@@ -39,3 +41,22 @@ def get_footer_logos():
             })
 
     return footer_logos
+
+
+def resource_total_views(id):
+    try:
+        data_dict = {'id': id, 'include_tracking': True}
+        resource = _get_action('resource_show', {}, data_dict)
+        tracking_summary = resource.get('tracking_summary')
+
+        if tracking_summary:
+            return tracking_summary.get('total')
+
+        return 0
+    except tookit.NotFound:
+        return 0
+
+
+def get_downloads_for_resources(resources):
+    result = get_downloads(resources)
+    return result

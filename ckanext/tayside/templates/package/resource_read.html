@@ -1,0 +1,27 @@
+{% ckan_extends %}
+
+{% block secondary_content %}
+  {% block stats %}
+    {% if c.resource %}
+      <div class="module module-narrow module-shallow context-info">
+        <h2 class="module-heading"><i class="fa fa-bar-chart-o"></i> {{ _('Stats') }}</h2>
+        <section class="module-content">
+          <div class="nums resource-tracking-summary">
+            {% set total_views = h.tayside_resource_total_views(c.resource.id) %}
+            <dl>
+              <dt>{{ _('Views') }}</dt>
+              <dd>{{ h.SI_number_span(total_views) }}</dd>
+            </dl>
+            <dl>
+              <dt>{{ _('Downloads') }}</dt>
+              {% set downloads = h.tayside_get_downloads_for_resources([c.resource]) %}
+              <dd>{{ h.SI_number_span(downloads) }}</dd>
+            </dl>
+          </div>
+        </section>
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {{ super() }}
+{% endblock %}
