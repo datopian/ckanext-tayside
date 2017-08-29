@@ -111,10 +111,11 @@ class LoadAnalytics(CkanCommand):
                 params.update({'filters': 'ga:eventAction==ResourceDownload;'})
 
                 if results.get('rows'):
-                    resources_downloads.append({
-                        'resource_id': row[1],
-                        'total_downloads': int(row[2])
-                    })
+                    for row in results.get('rows'):
+                        resources_downloads.append({
+                            'resource_id': row[1],
+                            'total_downloads': int(row[2])
+                        })
 
         # If there are less than 75 resources then query all.
         if len(resources) < 75:
