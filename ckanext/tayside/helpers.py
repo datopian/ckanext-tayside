@@ -58,5 +58,32 @@ def resource_total_views(id):
 
 
 def get_downloads_for_resources(resources):
-    result = get_downloads(resources)
+    result = 0
+
+    if resources:
+        result = get_downloads(resources)
+
     return result
+
+
+def order_resources(resources):
+    params = dict(toolkit.request.params)
+    reverse = True
+    order_by = 'last_modified'
+
+    if params and params.get('sort'):
+        order_by = params.get('sort').split(' ')[0]
+        reverse = params.get('sort').split(' ')[1]
+
+        if reverse == 'asc':
+            reverse = False
+        elif reverse == 'desc':
+            reverse = True
+
+    for resource in resources:
+        if not resource.get('last_modified'):
+            resource.update({'last_modified': resource.get('created')})
+
+    resources = sorted(resources, key=lambda x: x[order_by], reverse=reverse)
+
+    return resources

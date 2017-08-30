@@ -53,6 +53,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             'tayside_resource_total_views': helpers.resource_total_views,
             'tayside_get_downloads_for_resources':
             helpers.get_downloads_for_resources,
+            'tayside_order_resources': helpers.order_resources,
         }
 
     # IConfigurer

@@ -1,0 +1,39 @@
+<section id="dataset-resources" class="resources">
+  <h3>{{ _('Data and Resources') }}</h3>
+  {% if resources %}
+    <form class="search-form no-bottom-border" method="get" data-module="select-switch">
+      <div class="form-select control-group control-order-by">
+        <label for="field-order-by">{{ _('Order by') }}</label>
+        <select id="field-order-by" name="sort">
+          {% set sorting = [ (_('Last Modified'), 'last_modified desc'), (_('Name Ascending'), 'name asc'), (_('Name Descending'), 'name desc')] %}
+          {% for label, value in sorting %}
+            {% if label and value %}
+              <option value="{{ value }}"{% if request.params.sort == value %} selected="selected"{% endif %}>{{ label }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+  {% endif %}
+  {% block resource_list %}
+    {% if resources %}
+      <ul class="{% block resource_list_class %}resource-list{% endblock %}">
+        {% block resource_list_inner %}
+          {% set can_edit = h.check_access('package_update', {'id':pkg.id }) %}
+          {% set resources = h.tayside_order_resources(resources) %}
+          {% for resource in resources %}
+            {% snippet 'package/snippets/resource_item.html', pkg=pkg, res=resource, can_edit=can_edit %}
+          {% endfor %}
+        {% endblock %}
+      </ul>
+    {% else %}
+      {% if h.check_access('resource_create', {'package_id': pkg['id']}) %}
+        {% trans url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
+          <p class="empty">This dataset has no data, <a href="{{ url }}">why not add some?</a></p>
+        {% endtrans %}
+      {% else %}
+        <p class="empty">{{ _('This dataset has no data') }}</p>
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+</section>

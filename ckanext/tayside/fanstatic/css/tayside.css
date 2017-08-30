@@ -510,6 +510,17 @@ input[type="color"]:focus,
 .add-dataset-modal-backdrop {
   display: none;
 }
+.resources {
+  border: 1px solid #dddddd;
+  padding: 15px;
+}
+.resources h3,
+.resources .search-form {
+  display: inline;
+}
+.resource-list {
+  margin-top: 10px;
+}
 .control-order-by select {
   border-radius: 15px;
 }
