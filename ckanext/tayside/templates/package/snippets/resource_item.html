@@ -1,0 +1,60 @@
+{% ckan_extends %}
+
+{% block resource_item_explore %}
+  {% if not url_is_edit %}
+    <div class="btn-group" style="right: 135px;">
+      {% if res.url and h.is_url(res.url) %}
+        {% if res.has_views or res.url_type == 'upload' %}
+          <a href="{{ res.url }}" target="_blank" class="btn btn-success">{{ _('Download') }}</a>
+          {% set dump_supported_mimetypes = ['text/csv', 'text/tab-separated-values', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.oasis.opendocument.spreadsheet'] %}
+
+          {% if res.mimetype in dump_supported_mimetypes %}
+            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{ h.url_for(controller='ckanext.datastore.controller:DatastoreController', action='dump', resource_id=res.id) }}" target="_blank">CSV</a>
+                <a href="{{ h.url_for(controller='ckanext.datastore.controller:DatastoreController', action='dump', resource_id=res.id, format='tsv') }}" target="_blank">TSV</a>
+                <a href="{{ h.url_for(controller='ckanext.datastore.controller:DatastoreController', action='dump', resource_id=res.id, format='json') }}" target="_blank">JSON</a>
+                <a href="{{ h.url_for(controller='ckanext.datastore.controller:DatastoreController', action='dump', resource_id=res.id, format='xml') }}" target="_blank">XML</a>
+              </li>
+            </ul>
+          {% endif %}
+        {% else %}
+          <a href="{{ res.url }}" target="_blank" class="btn btn-success">{{ _('Go to resource') }}</a>
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="dropdown btn-group">
+      <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-share"></i>
+        {{ _('Explore') }}
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        {% block resource_item_explore_links %}
+          <li>
+            <a href="{{ url }}">
+              {% if res.has_views %}
+                <i class="fa fa-bar-chart-o"></i>
+                {{ _('Preview') }}
+              {% else %}
+                <i class="fa fa-info-circle"></i>
+                {{ _('More information') }}
+              {% endif %}
+            </a>
+          </li>
+          {% if can_edit %}
+            <li>
+              <a href="{{ h.url_for(controller='package', action='resource_edit', id=pkg.name, resource_id=res.id) }}">
+                <i class="fa fa-pencil-square-o"></i>
+                {{ _('Edit') }}
+              </a>
+            </li>
+          {% endif %}
+        {% endblock %}
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}
