@@ -1,0 +1,15 @@
+{% resource 'tayside/js/modules/autocomplete.js' %}
+{% resource 'tayside/js/lib/visibility-field.js' %}
+
+{% ckan_extends %}
+
+{% block package_basic_fields_org %}
+  {{ super() }}
+
+  <span class="info-block info-inline">
+    <i class="fa fa-info-circle"></i>
+    {% trans %}Select users outside your organisation who should have access to this private dataset.{% endtrans %}
+  </span>
+  {% set attrs = {'data-module': 'tayside-autocomplete', 'data-module-tags': true, 'data-module-source': '/api/2/util/tayside_user/autocomplete?q=?'} %}
+  {{ form.input('allowed_users', label=_('Allowed users'), placeholder=_('Enter usernames'), value=data.allowed_users, error=errors.allowed_users, classes=['control-medium'], attrs=attrs) }}
+{% endblock %}
