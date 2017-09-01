@@ -8,7 +8,7 @@
           <a href="{{ res.url }}" target="_blank" class="btn btn-success">{{ _('Download') }}</a>
           {% set dump_supported_mimetypes = ['text/csv', 'text/tab-separated-values', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.oasis.opendocument.spreadsheet'] %}
 
-          {% if (res.mimetype in dump_supported_mimetypes) or (res.archiver.mimetype in dump_supported_mimetypes) %}
+          {% if (res.mimetype in dump_supported_mimetypes) or (res.archiver and (res.archiver.mimetype in dump_supported_mimetypes)) %}
             <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
               <span class="caret"></span>
             </button>
