@@ -51,20 +51,18 @@
           {% set news_url = h.url(controller='ckanext.pages.controller:PagesController', action='blog_index') %}
           <a class="btn btn-small btn-news-archive" href="{{ news_url }}">{{ _('News Аrchive') }}</a>
         </div>
-        <div class="row">
+        <div class="news-items-container">
           {% for article in news %}
-            <div class="span4">
-              {% set article_url = h.url_for(controller='ckanext.pages.controller:PagesController', action='blog_show', page='/' + article.name) %}
-              <a href="{{ article_url }}" class="news-item">
-                {% if article.image %}
-                  <figure class="news-item-photo">
-                    <img src="{{ article.image }}">
-                  </figure>
-                {% endif %}
-                <span class="news-item-title">{{ article.title or article.name }}</span>
-                <span class="news-item-description">{{ h.markdown_extract(article.content) }}</span>
-              </a>
-            </div>
+            {% set article_url = h.url_for(controller='ckanext.pages.controller:PagesController', action='blog_show', page='/' + article.name) %}
+            <a href="{{ article_url }}" class="news-item">
+              {% if article.image %}
+                <figure class="news-item-photo">
+                  <img src="{{ article.image }}">
+                </figure>
+              {% endif %}
+              <span class="news-item-title">{{ article.title or article.name }}</span>
+              <span class="news-item-description">{{ h.markdown_extract(article.content) }}</span>
+            </a>
           {% endfor %}
         </div>
       </div>
