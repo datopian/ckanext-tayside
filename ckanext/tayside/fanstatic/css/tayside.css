@@ -432,6 +432,9 @@ input[type="color"]:focus,
 .resource-list {
   margin-top: 15px;
 }
+.search {
+  font-family: inherit;
+}
 .control-order-by select {
   border-radius: 15px;
 }
