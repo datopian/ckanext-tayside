@@ -16,11 +16,6 @@
   background-size: cover;
   background-position: center;
 }
-@media (max-width: 768px) {
-  .hero {
-    background-image: url("../../../../base/images/background-tile.png");
-  }
-}
 .hero-search {
   display: flex;
   justify-content: center;
