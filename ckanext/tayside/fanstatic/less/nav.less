@@ -1,5 +1,4 @@
 .nav-main {
-  background-color: @color-primary;
   .nav-collapse {
     .nav {
       @media (max-width: @screen-tablet) {
@@ -9,17 +8,11 @@
         a {
           text-transform: uppercase;
           font-size: @baseFontSize + 2;
-          color: @color-white;
           font-weight: 700;
         }
         @media (max-width: @screen-tablet) {
           a {
             margin: 0 @grid-gutter-width/2;
-            &:hover,
-            &:focus {
-              color: @color-white;
-              background-color: @color-secondary;
-            }
           }
         }
       }
@@ -29,18 +22,8 @@
     margin-top: @grid-gutter-width/2;
     margin-bottom: @grid-gutter-width/2;
     a {
-      color: @color-white;
       margin: 0;
       padding: @grid-gutter-width/4 @grid-gutter-width/2;
-      &:hover,
-      &:focus {
-        .nav-pills-active-bg-color;
-      }
-    }
-    .active {
-      a {
-        .nav-pills-active-bg-color;
-      }
     }
     @media (min-width: @screen-desktop) {
       >li {

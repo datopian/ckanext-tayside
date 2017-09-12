@@ -1,29 +1,9 @@
-body {
-  background: @color-white;
-  font-family: 'Open Sans', sans-serif;
-}
-
 @media (min-width: @screen-desktop) {
   .container {
     width: @screen-desktop - 60;
   }
   .span9 {
     width: 700px + @screen-default-desktop-difference;
-  }
-}
-
-.site-footer {
-  background: @color-neutral;
-}
-
-.homepage {
-  .module-search {
-    .module-content {
-      background-color: @color-primary;
-    }
-    .tags {
-      background-color: @color-secondary;
-    }
   }
 }
 
@@ -36,14 +16,6 @@ body {
     margin: 0;
   }
 }
-
-[role=main],
-.main {
-  &:not(.hero) {
-    background: @color-white;
-  }
-}
-
 
 /* Required for IE 11 because of this bug: https://goo.gl/LdrTn4 */
 
