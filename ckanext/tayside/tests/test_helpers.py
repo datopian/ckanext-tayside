@@ -25,11 +25,25 @@ class TestHelpers(ActionBase):
         group1 = factories.Group()
         group2 = factories.Group()
 
+        dataset_required_fields = {
+            'maintainer': 'Aleksandar',
+            'maintainer_email': 'test@test.com',
+            'author': 'Aleksandar',
+            'author_email': 'test@test.com',
+            'tag_string': 'test'
+        }
+
         for i in range(1):
-            dataset = factories.Dataset(groups=[{'id': group1.get('id')}])
+            dataset_required_fields.update({
+                'groups': [{'id': group1.get('id')}]
+            })
+            dataset = factories.Dataset(**dataset_required_fields)
 
         for i in range(3):
-            dataset = factories.Dataset(groups=[{'id': group2.get('id')}])
+            dataset_required_fields.update({
+                'groups': [{'id': group2.get('id')}]
+            })
+            dataset = factories.Dataset(**dataset_required_fields)
 
         groups = tayside_helpers.get_groups()
 
