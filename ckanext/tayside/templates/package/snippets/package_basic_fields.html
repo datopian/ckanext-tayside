@@ -23,6 +23,8 @@
 {% endblock %}
 
 {% block package_basic_fields_tags %}
-  {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
-  {{ form.input('tag_string', id='field-tags', label=_('Tags'), placeholder=_('eg. economy, mental health, government'), value=data.tag_string, error=errors.tag_string, classes=['control-full'], attrs=tag_attrs, is_required=True) }}
+  {% set tag_attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
+  {% set options = [{'name': 'nature', 'value': 'Nature'}, {'name': 'education', 'value': 'Education'}] %}
+  {{ form.select('tag_string', id='field-tags', label=_('Tags'), options=options, error=errors.tag_string, classes=['control-full'], attrs=tag_attrs, is_required=True) }}
 {% endblock %}
+
