@@ -17,14 +17,20 @@
   filter: @filter;
 }
 
-.marked-filter-border-radius(@radius: @grid-gutter-width/2){
+.marked-filter-border-radius(@radius: @grid-gutter-width/2) {
   border-top-left-radius: @radius;
   border-bottom-left-radius: @radius;
-  &:hover{
+  &:hover {
     border-radius: @radius;
   }
 }
 
-.flex{
+.flex {
   display: flex;
+}
+
+.nav-item-before-reset {
+  height: auto;
+  width: auto;
+  background-image: none;
 }
