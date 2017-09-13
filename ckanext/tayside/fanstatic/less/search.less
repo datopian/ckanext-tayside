@@ -1,3 +1,7 @@
+.search{
+  font-family: inherit;
+}
+
 .control-order-by {
   select {
     border-radius: @grid-gutter-width/2;
@@ -19,35 +23,10 @@
     input {
       border-radius: @grid-gutter-width;
     }
-    button {
-      i {
-        &:hover {
-          .search-icon-hover;
-        }
-      }
-    }
   }
-}
-
-.simple-input {
-  .field {
-    .btn-search {
-      &:hover {
-        .search-icon-hover;
-      }
-    }
-  }
-}
-
-#field-user-search {
-  border-color: @color-neutral-light;
 }
 
 #field-user-search,
 #field-sitewide-search {
   border-radius: @grid-gutter-width/2;
-}
-
-.search-icon-hover {
-  color: @color-primary;
 }
