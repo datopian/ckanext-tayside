@@ -1,0 +1,34 @@
+{% ckan_extends %}
+
+{% block basic_fields %}
+  {{ super() }}
+
+  <div class="control-group">
+    {% set error = errors.theme %}
+    <label class="control-label" for="field-license">{{ _('Theme') }}</label>
+    <div class="controls">
+      <select id="field-license" name="theme" data-module="autocomplete">
+        {% set existing_theme = data.get('theme') %}
+        {% set available_themes = [
+          'Agriculture, fisheries, forestry and food',
+          'Education, culture and sport',
+          'Environment',
+          'Energy',
+          'Transport',
+          'Science and technology',
+          'Economy and finance',
+          'Population and society',
+          'Health',
+          'Government and public sector',
+          'Regions and cities',
+          'Justice, legal system and public safety',
+          'International issues'
+        ] %}
+        {% for theme in available_themes %}
+          <option value="{{ theme }}" {% if existing_theme == theme %}selected="selected"{% endif %}>{{ theme }}</option>
+        {% endfor %}
+      </select>
+      {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
+    </div>
+  </div>
+{% endblock %}

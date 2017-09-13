@@ -1,0 +1,23 @@
+{% ckan_extends %}
+
+{% block package_metadata_author %}
+  {{ form.input('author', label=_('Author'), id='field-author', placeholder=_('name or job title'), value=data.author, error=errors.author, classes=['control-medium'], is_required=True) }}
+
+  {{ form.input('author_email', label=_('Author Email'), id='field-author-email', placeholder=_('joe@example.com'), value=data.author_email, error=errors.author_email, classes=['control-medium'], is_required=True) }}
+  {% endblock %}
+
+  {% block package_metadata_fields_maintainer %}
+  {{ form.input('maintainer', label=_('Maintainer'), id='field-maintainer', placeholder=_('name or job title'), value=data.maintainer, error=errors.maintainer, classes=['control-medium'], is_required=True) }}
+
+  {{ form.input('maintainer_email', label=_('Maintainer Email'), id='field-maintainer-email', placeholder=_('joe@example.com'), value=data.maintainer_email, error=errors.maintainer_email, classes=['control-medium'], is_required=True) }}
+{% endblock %}
+
+{% block custom_fields %}
+  {% set extras = [] %}
+  {% for extra in data.extras %}
+    {% if extra.key != 'theme' %}
+      {% if extras.append(extra) %}{% endif %}
+    {% endif %}
+  {% endfor %}
+  {% snippet 'snippets/custom_form_fields.html', extras=extras, errors=errors, limit=3 %}
+{% endblock %}

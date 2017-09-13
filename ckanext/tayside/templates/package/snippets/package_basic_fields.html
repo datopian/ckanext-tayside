@@ -13,3 +13,16 @@
   {% set attrs = {'data-module': 'tayside-autocomplete', 'data-module-tags': true, 'data-module-source': '/api/2/util/tayside_user/autocomplete?q=?'} %}
   {{ form.input('allowed_users', label=_('Allowed users'), placeholder=_('Enter usernames'), value=data.allowed_users, error=errors.allowed_users, classes=['control-medium'], attrs=attrs) }}
 {% endblock %}
+
+{% block package_basic_fields_title %}
+  {{ form.input('title', id='field-title', label=_('Title'), placeholder=_('eg. A descriptive title'), value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target'}, is_required=True) }}
+{% endblock %}
+
+{% block package_basic_fields_description %}
+  {{ form.markdown('notes', id='field-notes', label=_('Description'), placeholder=_('eg. Some useful notes about the data'), value=data.notes, error=errors.notes, is_required=True) }}
+{% endblock %}
+
+{% block package_basic_fields_tags %}
+  {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
+  {{ form.input('tag_string', id='field-tags', label=_('Tags'), placeholder=_('eg. economy, mental health, government'), value=data.tag_string, error=errors.tag_string, classes=['control-full'], attrs=tag_attrs, is_required=True) }}
+{% endblock %}

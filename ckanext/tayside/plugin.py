@@ -1,10 +1,11 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckan.lib.plugins import DefaultPermissionLabels
+from ckan.lib.plugins import DefaultPermissionLabels, DefaultGroupForm
 from ckan.common import c
 
 from ckanext.tayside import helpers
 import ckanext.tayside.logic.action.update as update_actions
+import ckanext.tayside.logic.action.get as get_actions
 from ckanext.tayside.logic import validators as tayside_validators
 from ckanext.tayside.logic import converters as tayside_converters
 
@@ -54,26 +55,47 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
     def _modify_package_schema(self, schema):
         ignore_empty = toolkit.get_validator('ignore_empty')
         convert_to_extras = toolkit.get_converter('convert_to_extras')
+        not_empty = toolkit.get_validator('not_empty')
+        email_validator = toolkit.get_validator('email_validator')
 
         schema.update({
             'allowed_users': [ignore_empty,
                               tayside_validators.user_names_exists,
                               tayside_validators.users_in_org_exists,
                               tayside_converters.convert_usernames_to_ids,
-                              convert_to_extras]
+                              convert_to_extras],
+            'title': [not_empty, unicode],
+            'notes': [not_empty, unicode],
+            'author': [not_empty, unicode],
+            'author_email': [not_empty, unicode, email_validator],
+            'maintainer': [not_empty, unicode],
+            'maintainer_email': [not_empty, unicode, email_validator],
         })
 
         return schema
 
     def create_package_schema(self):
+        not_empty = toolkit.get_validator('not_empty')
+        tag_string_convert = toolkit.get_validator('tag_string_convert')
+
         schema = super(TaysidePlugin, self).create_package_schema()
         schema = self._modify_package_schema(schema)
+
+        schema.update({
+            'tag_string': [not_empty, tag_string_convert],
+        })
 
         return schema
 
     def update_package_schema(self):
+        ignore_empty = toolkit.get_validator('ignore_empty')
+
         schema = super(TaysidePlugin, self).update_package_schema()
         schema = self._modify_package_schema(schema)
+
+        schema.update({
+            'tag_string': [ignore_empty],
+        })
 
         return schema
 
@@ -137,7 +159,8 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 
     def get_actions(self):
         return {
-            'config_option_update': update_actions.config_option_update
+            'config_option_update': update_actions.config_option_update,
+            'package_show': get_actions.package_show
         }
 
     # IPackageController
@@ -187,3 +210,37 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             labels.append(u'allowed_user-{0}'.format(user_obj.id))
 
         return labels
+
+
+class TaysideGroupSchemaPlugin(plugins.SingletonPlugin, DefaultGroupForm):
+    plugins.implements(plugins.IGroupForm, inherit=True)
+
+    # IGroupForm
+
+    def group_types(self):
+        return ['group']
+
+    def form_to_db_schema(self):
+        convert_to_extras = toolkit.get_converter('convert_to_extras')
+        ignore_missing = toolkit.get_validator('ignore_missing')
+
+        schema = super(TaysideGroupSchemaPlugin, self).form_to_db_schema()
+        schema.update({
+            'theme': [convert_to_extras, ignore_missing, unicode]
+        })
+
+        return schema
+
+    def db_to_form_schema(self):
+        convert_from_extras = toolkit.get_converter('convert_from_extras')
+        ignore_missing = toolkit.get_validator('ignore_missing')
+        not_empty = toolkit.get_validator('not_empty')
+
+        schema = super(TaysideGroupSchemaPlugin, self).form_to_db_schema()
+        schema.update({
+            'theme': [convert_from_extras, ignore_missing],
+            'num_followers': [not_empty],
+            'package_count': [ignore_missing]
+        })
+
+        return schema

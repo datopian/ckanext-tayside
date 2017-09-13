@@ -84,6 +84,7 @@ setup(
     entry_points='''
         [ckan.plugins]
         tayside=ckanext.tayside.plugin:TaysidePlugin
+        tayside_group_schema=ckanext.tayside.plugin:TaysideGroupSchemaPlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
