@@ -82,7 +82,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         schema = self._modify_package_schema(schema)
 
         schema.update({
-            'tag_string': [not_empty, tag_string_convert],
+            'tag_string': [not_empty],
         })
 
         return schema

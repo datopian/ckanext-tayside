@@ -19,6 +19,19 @@ parse_params = logic.parse_params
 
 class PackageController(_PackageController):
 
+    def _tag_string_to_list(self, tag_string):
+        ''' This method is overriden because "tag_string" that is sent through
+        the form comes as an array and not as a string. In the original
+        implementation this method expects a string. '''
+
+        out = []
+        for tag in tag_string:
+            tag = tag.strip()
+            if tag:
+                out.append({'name': tag,
+                            'state': 'active'})
+        return out
+
     def create_metadata_package(self):
 
         # Handle metadata-only datasets
@@ -44,6 +57,10 @@ class PackageController(_PackageController):
                 data_dict = clean_dict(dict_fns.unflatten(
                     tuplize_dict(parse_params(toolkit.request.POST))))
                 data_dict['type'] = package_type
+
+                if 'tag_string' in data_dict:
+                    data_dict['tags'] = self._tag_string_to_list(
+                        data_dict['tag_string'])
 
                 try:
                     package = get_action('package_create')(context, data_dict)

@@ -23,8 +23,22 @@
 {% endblock %}
 
 {% block package_basic_fields_tags %}
-  {% set tag_attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
+  {% set attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
   {% set options = [{'name': 'nature', 'value': 'Nature'}, {'name': 'education', 'value': 'Education'}] %}
-  {{ form.select('tag_string', id='field-tags', label=_('Tags'), options=options, error=errors.tag_string, classes=['control-full'], attrs=tag_attrs, is_required=True) }}
+  {% set classes = ['control-select', 'control-full'] %}
+  {% set id = 'field-tags' %}
+  {% set label = _('Tags') %}
+  {% set error = errors.tag_string %}
+  {% set is_required = True %}
+  {% set name = 'tag_string' %}
+  {% set selected = data.tag_string %}
+
+  {% call form.input_block(id or name, label or name, error, classes, extra_html='', is_required=True) %}
+    <select id="{{ id or name }}" name="{{ name }}" {{ form.attributes(attrs) }}>
+      {% for option in options %}
+        <option value="{{ option.value }}"{% if option.value in selected %} selected{% endif %}>{{ option.text or option.value }}</option>
+      {% endfor %}
+    </select>
+  {% endcall %}
 {% endblock %}
 
