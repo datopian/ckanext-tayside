@@ -3,6 +3,7 @@ from ckan.plugins import toolkit
 from ckan.common import config
 
 from ckanext.tayside.model import get_downloads
+from ckanext.tayside.tags import tags
 
 
 def _get_action(action, context_dict, data_dict):
@@ -87,3 +88,7 @@ def order_resources(resources):
     resources = sorted(resources, key=lambda x: x[order_by], reverse=reverse)
 
     return resources
+
+
+def get_tags():
+    return tags

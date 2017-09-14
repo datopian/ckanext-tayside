@@ -125,6 +125,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'tayside_get_downloads_for_resources':
             helpers.get_downloads_for_resources,
             'tayside_order_resources': helpers.order_resources,
+            'tayside_get_tags': helpers.get_tags,
         }
 
     # IConfigurer

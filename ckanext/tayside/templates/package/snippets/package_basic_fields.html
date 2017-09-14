@@ -24,7 +24,7 @@
 
 {% block package_basic_fields_tags %}
   {% set attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
-  {% set options = [{'name': 'nature', 'value': 'Nature'}, {'name': 'education', 'value': 'Education'}] %}
+  {% set tags = h.tayside_get_tags() %}
   {% set classes = ['control-select', 'control-full'] %}
   {% set id = 'field-tags' %}
   {% set label = _('Tags') %}
@@ -35,8 +35,12 @@
 
   {% call form.input_block(id or name, label or name, error, classes, extra_html='', is_required=True) %}
     <select id="{{ id or name }}" name="{{ name }}" {{ form.attributes(attrs) }}>
-      {% for option in options %}
-        <option value="{{ option.value }}"{% if option.value in selected %} selected{% endif %}>{{ option.text or option.value }}</option>
+      {% for group in tags %}
+        <optgroup label="{{ group.group }}">
+          {% for tag in group.tags %}
+            <option value="{{ tag }}"{% if tag in selected %} selected{% endif %}>{{ tag }}</option>
+          {% endfor %}
+        </optgroup>
       {% endfor %}
     </select>
   {% endcall %}
