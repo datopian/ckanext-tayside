@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block meta %}
+<!-- Open Graph protocol markup -->
+<meta property="og:image" content="{{ h.tayside_organization_image_url(c.pkg_dict.organization.id) or h.url_for_static('/base/images/placeholder-organization.png') }}" />
+<!-- ./ Open Graph protocol markup -->
+
+{{ super() }}
+{% endblock %}

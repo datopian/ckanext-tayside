@@ -1,0 +1,11 @@
+{% ckan_extends %}
+
+{% block meta %}
+<!-- Open Graph protocol markup -->
+<meta property="og:title" content="{{ g.site_title }}" />
+<meta property="og:description" content="{{ g.site_description }}" />
+<meta property="og:image" content="{{ g.site_logo }}" />
+<!-- ./ Open Graph protocol markup -->
+
+{{ super() }}
+{% endblock %}
