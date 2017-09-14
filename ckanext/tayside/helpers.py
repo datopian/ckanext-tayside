@@ -1,3 +1,4 @@
+import ckan.logic as logic
 from ckan import model
 from ckan.plugins import toolkit
 from ckan.common import config
@@ -92,3 +93,14 @@ def order_resources(resources):
 
 def get_tags():
     return tags
+
+
+def organization_image_url(org_id):
+    image_url = ''
+    try:
+        org = _get_action('organization_show', {'ignore_auth': True},
+                          {'id': org_id})
+    except logic.NotFound:
+        return image_url
+
+    return org['image_display_url']
