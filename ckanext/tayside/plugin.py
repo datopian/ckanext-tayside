@@ -41,6 +41,9 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 
         map.connect('/dataset/new', controller=package_controller,
                     action='create_metadata_package')
+        map.connect('dataset_edit', '/dataset/edit/{id}',
+                    controller=package_controller, action='dataset_edit',
+                    ckan_icon='pencil-square-o')
         map.connect('ckanext_tayside_footer_logos',
                     '/ckan-admin/manage_footer_logos',
                     controller=admin_controller, action='manage_footer_logos',
@@ -57,6 +60,8 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         convert_to_extras = toolkit.get_converter('convert_to_extras')
         not_empty = toolkit.get_validator('not_empty')
         email_validator = toolkit.get_validator('email_validator')
+        not_missing = toolkit.get_validator('not_missing')
+        tag_name_validator = toolkit.get_validator('tag_name_validator')
 
         schema.update({
             'allowed_users': [ignore_empty,
@@ -70,6 +75,10 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'author_email': [not_empty, unicode, email_validator],
             'maintainer': [not_empty, unicode],
             'maintainer_email': [not_empty, unicode, email_validator],
+        })
+
+        schema.get('tags').update({
+            'name': [not_missing, not_empty, unicode]
         })
 
         return schema

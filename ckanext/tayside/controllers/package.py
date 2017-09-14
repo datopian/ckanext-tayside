@@ -24,6 +24,9 @@ class PackageController(_PackageController):
         the form comes as an array and not as a string. In the original
         implementation this method expects a string. '''
 
+        if isinstance(tag_string, unicode):
+            tag_string = [tag_string]
+
         out = []
         for tag in tag_string:
             tag = tag.strip()
@@ -97,3 +100,12 @@ class PackageController(_PackageController):
                 return self.new()
         else:
             return self.new()
+
+    def dataset_edit(self, id, data=None, errors=None, error_summary=None):
+
+        # This must be set to 'edit' otherwise a 'satges' form is going to be
+        # rendered
+        c.form_style = 'edit'
+
+        return self.edit(id, data=data, errors=errors,
+                         error_summary=error_summary)
