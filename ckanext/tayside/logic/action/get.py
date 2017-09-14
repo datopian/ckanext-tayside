@@ -28,11 +28,17 @@ def package_show(context, data_dict):
     result = result.copy()
     extras = result.get('extras')
 
-    for extra in extras:
-        if extra.get('key') == 'theme':
-            extra['value'] = themes
-            return result
+    if extras:
+        for extra in extras:
+            if extra.get('key') == 'theme':
+                extra['value'] = themes
+                return result
 
-    extras.append({'key': 'theme', 'value': themes})
+        extras.append({'key': 'theme', 'value': themes})
+        # extras.append({'key': 'dcat_publisher_name', 'value': 'testirame'})
+    else:
+        result.update({'extras': []})
+        extras = result.get('extras')
+        # extras.append({'key': 'dcat_publisher_name', 'value': 'testirame'})
 
     return result
