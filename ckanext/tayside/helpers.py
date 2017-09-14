@@ -1,3 +1,4 @@
+import ckan.logic as l
 from ckan import model
 from ckan.plugins import toolkit
 from ckan.common import config
@@ -87,3 +88,16 @@ def order_resources(resources):
     resources = sorted(resources, key=lambda x: x[order_by], reverse=reverse)
 
     return resources
+
+
+def organization_image_url(org_id):
+    image_url = ''
+    try:
+        org = _get_action('organization_show',
+            {'ignore_auth': True},
+            {'id': org_id}
+        )
+    except l.NotFound:
+        return image_url
+
+    return org['image_display_url']
