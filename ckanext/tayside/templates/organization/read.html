@@ -5,3 +5,13 @@
     {% snippet 'snippets/add_dataset.html', group=c.group_dict.id %}
   {% endif %}
 {% endblock %}
+
+{% block meta %}
+  <!-- Open Graph protocol markup -->
+  <meta property="og:title" content="{{ c.group_dict.name }} - {{ g.site_title }}" />
+  <meta property="og:description" content="{{ c.group_dict.description }}" />
+  <meta property="og:image" content="{{ c.group_dict.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" />
+  <!-- ./ Open Graph protocol markup -->
+
+  {{ super() }}
+{% endblock %}
