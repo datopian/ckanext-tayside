@@ -15,7 +15,8 @@
 {% block custom_fields %}
   {% set extras = [] %}
   {% for extra in data.extras %}
-    {% if extra.key != 'theme' %}
+    {% set exluded_extras = ['theme', 'publisher_email', 'publisher_url'] %}
+    {% if extra.key not in exluded_extras %}
       {% if extras.append(extra) %}{% endif %}
     {% endif %}
   {% endfor %}
