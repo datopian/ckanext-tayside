@@ -1,9 +1,10 @@
-import ckan.logic as l
+import ckan.logic as logic
 from ckan import model
 from ckan.plugins import toolkit
 from ckan.common import config
 
 from ckanext.tayside.model import get_downloads
+from ckanext.tayside.tags import tags
 
 
 def _get_action(action, context_dict, data_dict):
@@ -90,14 +91,16 @@ def order_resources(resources):
     return resources
 
 
+def get_tags():
+    return tags
+
+
 def organization_image_url(org_id):
     image_url = ''
     try:
-        org = _get_action('organization_show',
-            {'ignore_auth': True},
-            {'id': org_id}
-        )
-    except l.NotFound:
+        org = _get_action('organization_show', {'ignore_auth': True},
+                          {'id': org_id})
+    except logic.NotFound:
         return image_url
 
     return org['image_display_url']

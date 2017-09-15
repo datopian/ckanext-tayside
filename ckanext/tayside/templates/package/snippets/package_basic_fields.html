@@ -23,8 +23,26 @@
 {% endblock %}
 
 {% block package_basic_fields_tags %}
-  {% set tag_attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
-  {% set options = [{'name': 'nature', 'value': 'Nature'}, {'name': 'education', 'value': 'Education'}] %}
-  {{ form.select('tag_string', id='field-tags', label=_('Tags'), options=options, error=errors.tag_string, classes=['control-full'], attrs=tag_attrs, is_required=True) }}
+  {% set attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
+  {% set tags = h.tayside_get_tags() %}
+  {% set classes = ['control-select', 'control-full'] %}
+  {% set id = 'field-tags' %}
+  {% set label = _('Tags') %}
+  {% set error = errors.tag_string %}
+  {% set is_required = True %}
+  {% set name = 'tag_string' %}
+  {% set selected = data.tag_string %}
+
+  {% call form.input_block(id or name, label or name, error, classes, extra_html='', is_required=True) %}
+    <select id="{{ id or name }}" name="{{ name }}" {{ form.attributes(attrs) }}>
+      {% for group in tags %}
+        <optgroup label="{{ group.group }}">
+          {% for tag in group.tags %}
+            <option value="{{ tag }}"{% if tag in selected %} selected{% endif %}>{{ tag }}</option>
+          {% endfor %}
+        </optgroup>
+      {% endfor %}
+    </select>
+  {% endcall %}
 {% endblock %}
 
