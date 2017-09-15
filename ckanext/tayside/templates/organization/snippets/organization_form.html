@@ -1,0 +1,7 @@
+{% ckan_extends %}
+
+{% block basic_fields %}
+  {{ super() }}
+
+  {{ form.input('organization_email', label=_('Organization Email'), id='field-organization-email', placeholder=_('joe@example.com'), value=data.organization_email, error=errors.organization_email, classes=['control-medium']) }}
+{% endblock %}
