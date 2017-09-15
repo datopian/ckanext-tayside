@@ -18,6 +18,10 @@ def package_show(context, data_dict):
     owner_org = result.get('owner_org')
     model = context.get('model')
     package = model.Package.get(dataset_id)
+
+    if package.type == 'showcase':
+        return result
+
     groups = package.get_groups(group_type='group')
     themes = []
 
