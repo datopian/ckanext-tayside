@@ -104,6 +104,7 @@ input[type="color"]:focus,
   border-left: transparent;
 }
 .masthead {
+  color: inherit;
   padding-top: 30px;
   padding-bottom: 30px;
   min-height: auto;
@@ -145,6 +146,26 @@ input[type="color"]:focus,
   position: relative;
   bottom: 3px;
   margin-right: 5px;
+}
+.language-picker {
+  list-style: none;
+  display: inline-block;
+  margin: 0 0 0 30px;
+  padding: 0;
+}
+.language-picker li {
+  display: inline;
+  float: left;
+}
+.language-picker li.active a {
+  font-weight: 700;
+}
+.language-picker li a {
+  display: inline-block;
+  padding: 10px 15px;
+}
+.language-picker li a:hover {
+  text-decoration: none;
 }
 .header-text-logo h1 {
   margin: 0;
