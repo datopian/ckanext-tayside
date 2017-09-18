@@ -45,6 +45,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <ul class="language-picker">
+          {% set current_url = request.environ.CKAN_CURRENT_URL %}
+          {% set current_lang = request.environ.CKAN_LANG %}
+          <li {% if current_lang == 'en' %}class="active"{% endif %}><a data-language="en" data-language-name="English" href="{% url_for current_url, locale='en' %}">EN</a></li>
+          <li {% if current_lang == 'fr' %}class="active"{% endif %}><a data-language="fr" data-language-name="French" href="{% url_for current_url, locale='fr' %}" >FR</a></li>
+        </ul>
       </div>
     </div>
   </header>
