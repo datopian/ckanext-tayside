@@ -24,13 +24,15 @@ class TestHelpers(ActionBase):
     def test_get_groups(self):
         group1 = factories.Group()
         group2 = factories.Group()
+        org = factories.Organization()
 
         dataset_required_fields = {
             'maintainer': 'Aleksandar',
             'maintainer_email': 'test@test.com',
             'author': 'Aleksandar',
             'author_email': 'test@test.com',
-            'tag_string': 'test'
+            'tag_string': 'test',
+            'owner_org': org.get('id')
         }
 
         for i in range(1):
