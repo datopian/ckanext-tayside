@@ -355,7 +355,6 @@ input[type="color"]:focus,
 }
 .news-item {
   display: flex;
-  flex-basis: 33.33%;
   flex-direction: column;
   justify-content: flex-start;
   transition: 200ms padding-top ease-in-out 20ms;
