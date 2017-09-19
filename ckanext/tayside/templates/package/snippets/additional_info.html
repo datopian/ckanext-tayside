@@ -3,7 +3,7 @@
 {% block extras scoped %}
   {% for extra in h.sorted_extras(pkg_dict.extras) %}
     {% set key, value = extra %}
-    {% set excluded_keys = ['theme', 'Theme', 'publisher_email', 'Publisher email', 'publisher_url'] %}
+    {% set excluded_keys = ['theme', 'Theme', 'publisher_email', 'Publisher email', 'publisher_url', 'Publisher URL'] %}
     {% if key not in excluded_keys %}
       <tr rel="dc:relation" resource="_:extra{{ i }}">
         <th scope="row" class="dataset-label" property="rdfs:label">{{ _(key) }}</th>
