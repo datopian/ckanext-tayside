@@ -153,6 +153,23 @@ input[type="color"]:focus,
   margin: 0 0 0 30px;
   padding: 0;
 }
+@media (max-width: 980px) {
+  .language-picker {
+    position: absolute;
+    top: 153px;
+    right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .language-picker {
+    right: 50px;
+  }
+}
+@media (max-width: 360px) {
+  .language-picker {
+    display: none;
+  }
+}
 .language-picker li {
   display: inline;
   float: left;
