@@ -1,6 +1,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckan.lib.plugins import DefaultPermissionLabels, DefaultGroupForm
+from ckan.lib.plugins import (DefaultPermissionLabels, DefaultGroupForm
+                              DefaultTranslation)
 from ckan.common import c
 
 from ckanext.tayside import helpers
@@ -11,7 +12,7 @@ from ckanext.tayside.logic import converters as tayside_converters
 
 
 class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
-                    DefaultPermissionLabels):
+                    DefaultPermissionLabels, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IDatasetForm, inherit=True)
@@ -19,6 +20,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IPermissionLabels)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 

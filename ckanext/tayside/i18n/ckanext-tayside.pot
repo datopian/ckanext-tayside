@@ -1,0 +1,361 @@
+# Translations template for ckanext-tayside.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the ckanext-tayside
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-tayside 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-09-21 14:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: ckanext/tayside/controllers/package.py:76
+msgid "Unauthorized to create a dataset."
+msgstr ""
+
+#: ckanext/tayside/fanstatic/js/modules/autocomplete.js:200
+#: ckanext/tayside/fanstatic/js/modules/autocomplete.min.js:7
+msgid "Start typing…"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/js/modules/autocomplete.js:200
+#: ckanext/tayside/fanstatic/js/modules/autocomplete.min.js:7
+msgid "No matches found"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/js/modules/autocomplete.js:209
+#: ckanext/tayside/fanstatic/js/modules/autocomplete.min.js:7
+#, python-format
+msgid "Input is too short, must be at least one character"
+msgid_plural "Input is too short, must be at least %(num)d characters"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:25
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid " "
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:25
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid "."
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid "*"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid "import"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid "{}"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid ",\n"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid " = "
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid "\n"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid "debugger;"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid ":"
+msgstr ""
+
+#: ckanext/tayside/fanstatic/node_modules/ajv/dist/regenerator.min.js:26
+msgid ", "
+msgstr ""
+
+#: ckanext/tayside/logic/validators.py:12
+msgid "User not found"
+msgstr ""
+
+#: ckanext/tayside/templates/footer.html:6
+msgid "Cookies"
+msgstr ""
+
+#: ckanext/tayside/templates/footer.html:7
+msgid "Code of Conduct"
+msgstr ""
+
+#: ckanext/tayside/templates/footer.html:8
+msgid "Data Policy"
+msgstr ""
+
+#: ckanext/tayside/templates/footer.html:9
+msgid "CKAN API"
+msgstr ""
+
+#: ckanext/tayside/templates/header.html:5
+msgid "Datasets"
+msgstr ""
+
+#: ckanext/tayside/templates/header.html:6
+msgid "Organizations"
+msgstr ""
+
+#: ckanext/tayside/templates/header.html:7
+msgid "Groups"
+msgstr ""
+
+#: ckanext/tayside/templates/header.html:8
+msgid "Showcases"
+msgstr ""
+
+#: ckanext/tayside/templates/header.html:9
+msgid "Data Requests"
+msgstr ""
+
+#: ckanext/tayside/templates/header.html:10
+#: ckanext/tayside/templates/home/about.html:4
+#: ckanext/tayside/templates/home/about.html:8
+#: ckanext/tayside/templates/home/about.html:18
+msgid "About"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/config.html:10
+msgid "Twitter"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/config.html:10
+msgid "Your Twitter username"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/config.html:14
+msgid "Attribution"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/config.html:14
+msgid "Attribution and licensing information for Hero image"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:11
+msgid "Organization Link"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:14
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:15
+msgid "Logo image"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:29
+msgid "Anchor URL"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:29
+msgid "External link to which the logo anchor points"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:30
+msgid "Title"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:30
+msgid "Logo title"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:34
+msgid "Save"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:43
+msgid "Organization Links"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:46
+msgid ""
+" <p>Manage links to relevant organizations, shown as logo images in the "
+"footer and included on all pages.</p> "
+msgstr ""
+
+#: ckanext/tayside/templates/admin/snippets/tayside_hero_image.html:5
+#: ckanext/tayside/templates/admin/snippets/tayside_hero_image.html:6
+msgid "Hero image"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/snippets/tayside_image_upload.html:10
+msgid "http://example.com/my-image.jpg"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/snippets/tayside_image_upload.html:11
+msgid "Image URL"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/snippets/tayside_image_upload.html:12
+msgid "Image"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/snippets/tayside_image_upload.html:24
+msgid "Clear Upload"
+msgstr ""
+
+#: ckanext/tayside/templates/admin/snippets/tayside_site_symbol.html:5
+#: ckanext/tayside/templates/admin/snippets/tayside_site_symbol.html:6
+msgid "Site symbol"
+msgstr ""
+
+#: ckanext/tayside/templates/group/snippets/group_form.html:8
+msgid "Theme"
+msgstr ""
+
+#: ckanext/tayside/templates/home/layout1.html:50
+msgid "In the News"
+msgstr ""
+
+#: ckanext/tayside/templates/home/layout1.html:52
+msgid "News Аrchive"
+msgstr ""
+
+#: ckanext/tayside/templates/home/snippets/hero_search.html:1
+msgid "Search (e.g. \"Parking\" or \"Schools\""
+msgstr ""
+
+#: ckanext/tayside/templates/home/snippets/hero_search.html:20
+msgid "Search"
+msgstr ""
+
+#: ckanext/tayside/templates/organization/snippets/organization_form.html:6
+msgid "Organization Email"
+msgstr ""
+
+#: ckanext/tayside/templates/organization/snippets/organization_form.html:6
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:6
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:12
+msgid "joe@example.com"
+msgstr ""
+
+#: ckanext/tayside/templates/package/resource_read.html:7
+msgid "Stats"
+msgstr ""
+
+#: ckanext/tayside/templates/package/resource_read.html:12
+#: ckanext/tayside/templates/package/snippets/info.html:7
+msgid "Views"
+msgstr ""
+
+#: ckanext/tayside/templates/package/resource_read.html:16
+#: ckanext/tayside/templates/package/snippets/info.html:12
+msgid "Downloads"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/info.html:17
+msgid "Followers"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/package_form.html:7
+msgid "Create"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/package_form.html:9
+msgid "Next: Add Data"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:4
+msgid "Author"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:4
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:10
+msgid "name or job title"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:6
+msgid "Author Email"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:10
+msgid "Maintainer"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:12
+msgid "Maintainer Email"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resource_item.html:8
+msgid "Download"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resource_item.html:25
+msgid "Go to resource"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resource_item.html:32
+msgid "Explore"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resource_item.html:41
+msgid "Preview"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resource_item.html:44
+msgid "More information"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resource_item.html:52
+msgid "Edit"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resources_list.html:2
+msgid "Data and Resources"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resources_list.html:6
+msgid "Order by"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resources_list.html:8
+msgid "Last Modified"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resources_list.html:8
+msgid "Name Ascending"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resources_list.html:8
+msgid "Name Descending"
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resources_list.html:31
+#, python-format
+msgid ""
+" <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
+" some?</a></p> "
+msgstr ""
+
+#: ckanext/tayside/templates/package/snippets/resources_list.html:35
+msgid "This dataset has no data"
+msgstr ""
+
+#: ckanext/tayside/templates/scheming/form_snippets/tags.html:10
+msgid "Tags"
+msgstr ""
+
+#: ckanext/tayside/templates/snippets/add_dataset.html:4
+#: ckanext/tayside/templates/snippets/add_dataset.html:14
+msgid "Add Dataset"
+msgstr ""
+
+#: ckanext/tayside/templates/snippets/add_dataset.html:35
+msgid "Add metadata"
+msgstr ""
+
