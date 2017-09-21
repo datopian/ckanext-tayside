@@ -1,6 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckan.lib.plugins import (DefaultPermissionLabels, DefaultGroupForm
+from ckan.lib.plugins import (DefaultPermissionLabels, DefaultGroupForm,
                               DefaultTranslation)
 from ckan.common import c
 
