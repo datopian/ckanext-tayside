@@ -58,6 +58,17 @@
   display: inline-block;
   margin: 0 0 0 @grid-gutter-width;
   padding: 0;
+  @media (max-width: @screen-default){
+    position: absolute;
+    top: @grid-gutter-width*5.1;
+    right: @grid-gutter-width;
+  }
+  @media (max-width: @screen-tablet){
+    right: @grid-gutter-width + 20px;
+  }
+  @media (max-width: @screen-phone-xs){
+    display: none;
+  }
   li {
     display: inline;
     float: left; // Required to remove extra white space between <li> items
