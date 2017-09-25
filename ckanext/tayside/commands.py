@@ -129,3 +129,20 @@ class LoadAnalytics(CkanCommand):
                     })
 
         return resources_downloads
+
+
+class CheckUpdateFrequency(CkanCommand):
+    ''' Check update frequency for datasets. '''
+
+    summary = __doc__.split('\n')[0]
+    usage = __doc__
+    max_args = 0
+    min_args = 0
+
+    def command(self):
+        self._load_config()
+        log = logging.getLogger('ckanext.tayside')
+
+        log.info('Checking update frequency started...')
+
+        log.info('Checking update frequency finished successfully.')

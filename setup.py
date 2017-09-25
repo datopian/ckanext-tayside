@@ -92,6 +92,7 @@ setup(
         [paste.paster_command]
         initdb = ckanext.tayside.commands:InitDB
         loadanalytics = ckanext.tayside.commands:LoadAnalytics
+        check_update_frequency = ckanext.tayside.commands:CheckUpdateFrequency
     ''',
 
     # If you are changing from the default layout of your extension, you may
