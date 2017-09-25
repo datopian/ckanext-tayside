@@ -104,3 +104,19 @@ def organization_image_url(org_id):
         return image_url
 
     return org['image_display_url']
+
+
+def get_update_frequency_list():
+    return [
+        'Continual',
+        'Daily',
+        'Weekly',
+        'Monthly',
+        'Quarterly',
+        'Biannually',
+        'Annually',
+        'As Needed',
+        'Irregular',
+        'Not Planned',
+        'Unknown'
+    ]

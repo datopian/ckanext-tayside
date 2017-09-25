@@ -77,6 +77,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'author_email': [not_empty, unicode, email_validator],
             'maintainer': [not_empty, unicode],
             'maintainer_email': [not_empty, unicode, email_validator],
+            'frequency': [ignore_empty, unicode, convert_to_extras]
         })
 
         schema.get('tags').update({
@@ -118,7 +119,8 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         schema.update({
             'allowed_users': [convert_from_extras,
                               tayside_converters.convert_ids_to_usernames,
-                              ignore_missing]
+                              ignore_missing],
+            'frequency': [convert_from_extras]
         })
 
         return schema
@@ -137,7 +139,9 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             helpers.get_downloads_for_resources,
             'tayside_order_resources': helpers.order_resources,
             'tayside_get_tags': helpers.get_tags,
-            'tayside_organization_image_url': helpers.organization_image_url
+            'tayside_organization_image_url': helpers.organization_image_url,
+            'tayside_get_update_frequency_list':
+            helpers.get_update_frequency_list,
         }
 
     # IConfigurer

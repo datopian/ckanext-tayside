@@ -1,5 +1,24 @@
 {% ckan_extends %}
 
+{% import 'macros/form.html' as form %}
+
+{% set attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
+{% set frequency_list = h.tayside_get_update_frequency_list() %}
+{% set classes = ['control-select', 'control-full'] %}
+{% set id = 'field-tags' %}
+{% set label = _('Update frequency') %}
+{% set error = errors.frequency %}
+{% set name = 'frequency' %}
+{% set selected = data.frequency %}
+
+{% call form.input_block(id or name, label or name, error, classes, extra_html='') %}
+  <select id="{{ id or name }}" name="{{ name }}" {{ form.attributes(attrs) }}>
+    {% for item in frequency_list %}
+      <option value="{{ item }}"{% if item in selected %} selected{% endif %}>{{ item }}</option>
+    {% endfor %}
+  </select>
+{% endcall %}
+
 {% block package_metadata_author %}
   {{ form.input('author', label=_('Author'), id='field-author', placeholder=_('name or job title'), value=data.author, error=errors.author, classes=['control-medium'], is_required=True) }}
 
