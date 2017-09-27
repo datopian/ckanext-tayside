@@ -120,7 +120,7 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'allowed_users': [convert_from_extras,
                               tayside_converters.convert_ids_to_usernames,
                               ignore_missing],
-            'frequency': [convert_from_extras]
+            'frequency': [convert_from_extras, ignore_missing]
         })
 
         return schema

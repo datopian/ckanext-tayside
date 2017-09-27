@@ -108,7 +108,6 @@ def organization_image_url(org_id):
 
 def get_update_frequency_list():
     return [
-        'Continual',
         'Daily',
         'Weekly',
         'Monthly',

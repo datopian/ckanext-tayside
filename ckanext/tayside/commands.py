@@ -1,12 +1,17 @@
 import logging
 import os
+import datetime
 
 from ckan.lib.cli import CkanCommand
 from ckan import model
+from ckan.plugins import toolkit
+from ckan.controllers.admin import get_sysadmins
+import ckan.lib.mailer as ckan_mailer
 
 from ckanext.googleanalytics.ga_auth import init_service, get_profile_id
 
 from ckanext.tayside.model import init_table, update_downloads
+from ckanext.tayside.helpers import get_update_frequency_list
 
 
 class InitDB(CkanCommand):
@@ -141,8 +146,136 @@ class CheckUpdateFrequency(CkanCommand):
 
     def command(self):
         self._load_config()
-        log = logging.getLogger('ckanext.tayside')
+        self.log = logging.getLogger('ckanext.tayside')
 
-        log.info('Checking update frequency started...')
+        self.log.info('Checking update frequency started...')
 
-        log.info('Checking update frequency finished successfully.')
+        outdated_datasets = self._check_outdated_datasets()
+
+        if len(outdated_datasets) > 0:
+            self._notify_maintainers(outdated_datasets)
+
+        self.log.info('Checking update frequency finished successfully.')
+
+    def _days_between(self, d1, d2):
+        d1 = datetime.datetime.strptime(d1, "%Y-%m-%dT%H:%M:%S.%f")
+        d2 = datetime.datetime.strptime(d2, "%Y-%m-%dT%H:%M:%S.%f")
+
+        return abs((d2 - d1).days)
+
+    def _check_outdated_datasets(self):
+        update_frequencies = get_update_frequency_list()
+        datasets = toolkit.get_action('package_search')(
+            {'ignore_auth': True}, {'include_private': True, 'rows': 10000000}
+        )
+        current_time = datetime.date.today().strftime('%Y-%m-%dT%H:%M:%S.%f')
+        outdated_datasets = []
+
+        for dataset in datasets.get('results')[0:10]:
+            pkg = toolkit.get_action('package_show')(
+                {'ignore_auth': True}, {'id': dataset.get('id')}
+            )
+
+            current_update_frequency = pkg.get('frequency')
+
+            if current_update_frequency in update_frequencies:
+                resources = pkg.get('resources')
+                outdated_resources = 0
+                contact_admin = False
+
+                if resources:
+                    for resource in resources:
+                        if resource.get('url_type') == 'upload':
+                            days_diff = self._days_between(
+                                current_time, resource.get('last_modified')
+                            )
+
+                            if current_update_frequency == 'Daily':
+                                if days_diff > 1:
+                                    outdated_resources += 1
+
+                                    if days_diff - 1 >= 7:
+                                        contact_admin = True
+                            elif current_update_frequency == 'Weekly':
+                                if days_diff > 7:
+                                    outdated_resources += 1
+
+                                    if days_diff - 7 >= 7:
+                                        contact_admin = True
+                            elif current_update_frequency == 'Monthly':
+                                if days_diff > 30:
+                                    outdated_resources += 1
+
+                                    if days_diff - 30 >= 7:
+                                        contact_admin = True
+                            elif current_update_frequency == 'Quarterly':
+                                if days_diff > 90:
+                                    outdated_resources += 1
+
+                                    if days_diff - 90 >= 7:
+                                        contact_admin = True
+                            elif current_update_frequency == 'Biannually':
+                                if days_diff > 180:
+                                    outdated_resources += 1
+
+                                    if days_diff - 180 >= 7:
+                                        contact_admin = True
+                            elif current_update_frequency == 'Annually':
+                                if days_diff > 360:
+                                    outdated_resources += 1
+
+                                    if days_diff - 360 >= 7:
+                                        contact_admin = True
+
+                    # Only if all data (resources) in the dataset is stale
+                    # it's considered as outdated
+                    if outdated_resources == len(resources):
+                        outdated_datasets.append({
+                            'dataset': dataset,
+                            'contact_admin': contact_admin
+                        })
+
+        return outdated_datasets
+
+    def _notify_maintainers(self, outdated_datasets):
+        for item in outdated_datasets:
+            maintainer = item.get('dataset').get('maintainer')
+
+            # Notify all admins of the organization the dataset belongs to if
+            # dataset is outdated for more than 1 week.
+            if item.get('contact_admin'):
+                org = toolkit.get_action('organization_show')({}, {
+                    'id': item.get('dataset').get('owner_org')
+                })
+
+                org_users = org.get('users')
+
+                for org_user in org_users:
+                    if org_user.get('capacity') == 'admin':
+                        user = toolkit.get_action('user_show')({
+                            'ignore_auth': True
+                        }, {
+                            'id': org_user.get('name')
+                        })
+
+                        recipient_email = user.get('email')
+                        self._send_mail(recipient_email, user.get('name'),
+                                        item.get('dataset').get('name'))
+            else:
+                recipient_email = item.get('dataset').get('maintainer_email')
+                self._send_mail(recipient_email, maintainer,
+                                item.get('dataset').get('name'))
+
+    def _send_mail(self, recipient_email, user_name, dataset_name):
+        subject = 'Dataset outdated'
+        body = 'body text'
+
+        try:
+            self.log.info('Notifying user {0} for dataset {1}...'.format(
+                user_name, dataset_name)
+            )
+            ckan_mailer.mail_recipient(user_name, recipient_email, subject,
+                                       body)
+        except ckan_mailer.MailerException:
+            self.log.error('Error notifying user {0} for dataset '
+                           '{1}.'.format(user_name, dataset_name))

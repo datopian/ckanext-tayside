@@ -2,9 +2,8 @@
 
 {% import 'macros/form.html' as form %}
 
-{% set attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
 {% set frequency_list = h.tayside_get_update_frequency_list() %}
-{% set classes = ['control-select', 'control-full'] %}
+{% set classes = ['control-select', 'control-small'] %}
 {% set id = 'field-tags' %}
 {% set label = _('Update frequency') %}
 {% set error = errors.frequency %}
@@ -12,7 +11,7 @@
 {% set selected = data.frequency %}
 
 {% call form.input_block(id or name, label or name, error, classes, extra_html='') %}
-  <select id="{{ id or name }}" name="{{ name }}" {{ form.attributes(attrs) }}>
+  <select id="{{ id or name }}" name="{{ name }}">
     {% for item in frequency_list %}
       <option value="{{ item }}"{% if item in selected %} selected{% endif %}>{{ item }}</option>
     {% endfor %}
