@@ -522,6 +522,7 @@ input[type="color"]:focus,
   max-height: 90px;
 }
 .organization-logos figure figcaption {
+  display: none;
   margin: 15px 0;
 }
 .js .image-upload input[type=file] {
