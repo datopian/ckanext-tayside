@@ -49,8 +49,10 @@
 
           <a href="{{ logo.logo_link_url }}" target="_blank">
             <figure>
-              <img src="{{ logo_image_url }}">
-              <figcaption>{{ logo.logo_text }}</figcaption>
+              <img src="{{ logo_image_url }}" {% if logo.logo_text %}alt="{{ logo.logo_text }}"{% endif %}>
+              {% if logo.logo_text %}
+                <figcaption>{{ logo.logo_text }}</figcaption>
+              {% endif %}
             </figure>
           </a>
         {% endfor %}
