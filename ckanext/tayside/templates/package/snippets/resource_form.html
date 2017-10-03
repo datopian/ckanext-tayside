@@ -1,0 +1,19 @@
+{% resource 'tayside/js/modules/validate-resource.js' %}
+
+{% ckan_extends %}
+
+{% block basic_fields %}
+  {{ super() }}
+
+  {% if stage != 1 %}
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox" for="validate">
+          <input id="validate" type="checkbox" name="validate" value="" data-module="tayside-validate-resource" data-module-pkg_name="{{ pkg_name }}">
+          {{ _('Validate resource?') }}
+        </label>
+        {{ form.info(_('Supported formats for validation: CSV, TSV, XLS, XLSX and ODS')) }}
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

@@ -46,6 +46,9 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         map.connect('dataset_edit', '/dataset/edit/{id}',
                     controller=package_controller, action='dataset_edit',
                     ckan_icon='pencil-square-o')
+        map.connect('/dataset/new_resource/{id}/validate',
+                    controller=package_controller,
+                    action='validate_resource')
         map.connect('ckanext_tayside_footer_logos',
                     '/ckan-admin/manage_footer_logos',
                     controller=admin_controller, action='manage_footer_logos',

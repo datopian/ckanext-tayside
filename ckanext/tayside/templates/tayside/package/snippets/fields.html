@@ -1,0 +1,40 @@
+{% import 'macros/form.html' as form %}
+
+{% if fields %}
+  {% set action = '/dataset/new_resource/' + pkg_name + '/validate?check_schema=true' %}
+{% else %}
+  {% set action = '/dataset/new_resource/' + pkg_name + '/validate?upload_data=true' %}
+{% endif %}
+
+<form id="validate-resource-form" class="form-horizontal" method="post" action="{{ action }}">
+  <input type="hidden" name="file_path" value="{{ file_path }}" />
+
+  {% set field_types = [
+    {'value': 'string'},
+    {'value': 'number'},
+    {'value': 'integer'},
+    {'value': 'boolean'},
+    {'value': 'date'},
+    {'value': 'time'},
+    {'value': 'datetime'},
+    {'value': 'year'},
+  ] %}
+
+  {% for field in fields %}
+    <fieldset>
+      <legend>{{ field }}</legend>
+      <input type="hidden" name="field_name" value="{{ field }}" />
+      {{ form.select('field_type', label=_('Type'), options=field_types, selected='string') }}
+    </fieldset>
+  {% endfor %}
+
+  {% if request.params.check_schema %}
+    {% if errors %}
+      <button class="btn btn-primary pull-right" type="submit" name="validate">{{ _('Upload data with errors') }}</button>
+    {% else %}
+      <button class="btn btn-primary pull-right" type="submit" name="validate">{{ _('Upload data') }}</button>
+    {% endif %}
+  {% else %}
+    <button class="btn btn-primary pull-right" type="submit" name="validate">{{ _('Validate') }}</button>
+  {% endif %}
+</form>

@@ -479,6 +479,15 @@ input[type="color"]:focus,
 .resource-list {
   margin-top: 15px;
 }
+.validate-resource li {
+  width: 33.333333%;
+}
+.validate-resource-report-header {
+  margin-bottom: 30px;
+}
+.validate-resource-report-error-count {
+  margin-bottom: 20px;
+}
 .search {
   font-family: inherit;
 }
@@ -546,4 +555,3 @@ input[type="color"]:focus,
   margin-top: -20px !important;
   border-top: none !important;
 }
-/*# sourceMappingURL=tayside.css.map */

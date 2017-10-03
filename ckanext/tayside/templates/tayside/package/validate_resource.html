@@ -1,0 +1,76 @@
+{% extends "package/edit_base.html" %}
+
+{% block primary_content %}
+  <section class="module">
+    {% block page_header %}{% endblock %}
+    <div class="module-content">
+      {% block primary_content_inner %}
+        {{ h.snippet('tayside/package/snippets/stages.html', stages=['complete', 'complete', 'active']) }}
+
+        {% if report %}
+          {% set errors = report.tables[0].errors %}
+
+          <h3 class="validate-resource-report-header">Report</h3>
+
+          <p>Openness: {% snippet "qa/stars.html", stars=stars %}</p>
+
+          {% if errors | length > 0 %}
+            <p class="validate-resource-report-error-count">Number of errors: {{ report.get('error-count') }}</p>
+
+            <table class="table table-bordered" style="width: initial;">
+              <thead>
+                <tr>
+                  <th class="span2">Column number</th>
+                  <th class="span2">Row number</th>
+                  <th class="span8">Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for error in errors %}
+                  <tr>
+                    <td>{{ error.get('column-number') }}</td>
+                    <td>{{ error.get('row-number') }}</td>
+                    <td>{{ error.get('message') }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>No errors found.</p>
+          {% endif %}
+        {% endif %}
+
+        {% if redis_error %}
+          <h3 class="text-center">{{ redis_error }}</h3>
+        {% endif %}
+
+        {% if format_error %}
+          <h3 class="text-center">{{ format_error }}</h3>
+        {% endif %}
+
+        {% if upload_error %}
+          <h3 class="text-center">{{ upload_error }}</h3>
+        {% endif %}
+
+        {% if not redis_error and not format_error and not upload_error %}
+          {{ h.snippet('tayside/package/snippets/fields.html', fields=fields, errors=errors or {}, pkg_name=pkg_name, file_path=file_path) }}
+        {% endif %}
+      {% endblock %}
+    </div>
+  </section>
+{% endblock %}
+
+{% block secondary_content %}
+  {% block info_module %}
+    <section class="module module-narrow module-shallow">
+      <h2 class="module-heading"><i class="fa fa-info-circle"></i> {{ _('Validate resource') }}</h2>
+      <div class="module-content">
+        <p>
+          {% trans %}
+          Validate the data you upload before submitting it to the Datastore.
+          {% endtrans %}
+        </p>
+      </div>
+    </section>
+  {% endblock %}
+{% endblock %}
