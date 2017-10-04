@@ -21,7 +21,7 @@ msgstr ""
 
 #: ckanext/tayside/controllers/package.py:76
 msgid "Unauthorized to create a dataset."
-msgstr ""
+msgstr "Unauthorised to create a dataset."
 
 #: ckanext/tayside/fanstatic/js/modules/autocomplete.js:200
 #: ckanext/tayside/fanstatic/js/modules/autocomplete.min.js:7
@@ -113,7 +113,7 @@ msgstr ""
 
 #: ckanext/tayside/templates/header.html:6
 msgid "Organizations"
-msgstr ""
+msgstr "Organisations"
 
 #: ckanext/tayside/templates/header.html:7
 msgid "Groups"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:11
 msgid "Organization Link"
-msgstr ""
+msgstr "Organisation Link"
 
 #: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:14
 #: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:15
@@ -181,13 +181,15 @@ msgstr ""
 
 #: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:43
 msgid "Organization Links"
-msgstr ""
+msgstr "Organisation Links"
 
 #: ckanext/tayside/templates/admin/tayside_manage_footer_logos.html:46
 msgid ""
 " <p>Manage links to relevant organizations, shown as logo images in the "
 "footer and included on all pages.</p> "
 msgstr ""
+" <p>Manage links to relevant organisations, shown as logo images in the "
+"footer and included on all pages.</p> "
 
 #: ckanext/tayside/templates/admin/snippets/tayside_hero_image.html:5
 #: ckanext/tayside/templates/admin/snippets/tayside_hero_image.html:6
@@ -237,7 +239,7 @@ msgstr ""
 
 #: ckanext/tayside/templates/organization/snippets/organization_form.html:6
 msgid "Organization Email"
-msgstr ""
+msgstr "Organisation Email"
 
 #: ckanext/tayside/templates/organization/snippets/organization_form.html:6
 #: ckanext/tayside/templates/package/snippets/package_metadata_fields.html:6
