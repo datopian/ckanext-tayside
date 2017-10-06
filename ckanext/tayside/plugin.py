@@ -3,12 +3,49 @@ import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import (DefaultPermissionLabels, DefaultGroupForm,
                               DefaultTranslation)
 from ckan.common import c
+from ckan.lib.base import BaseController
+from ckan.common import config
 
 from ckanext.tayside import helpers
 import ckanext.tayside.logic.action.update as update_actions
 import ckanext.tayside.logic.action.get as get_actions
 from ckanext.tayside.logic import validators as tayside_validators
 from ckanext.tayside.logic import converters as tayside_converters
+
+
+# There is a bug in CKAN where header keys and values for CORS are using
+# unicode, and that causes problem in uwsgi. This monkey patch fixes that.
+def set_cors_headers_for_response(response):
+    u'''
+    Set up Access Control Allow headers if either origin_allow_all is True, or
+    the request Origin is in the origin_whitelist.
+    '''
+
+    cors_origin_allowed = None
+    if toolkit.asbool(config.get('ckan.cors.origin_allow_all')):
+        cors_origin_allowed = '*'
+    elif config.get('ckan.cors.origin_whitelist') and \
+            toolkit.request.headers.get('Origin') \
+            in config['ckan.cors.origin_whitelist'].split(' '):
+        # set var to the origin to allow it.
+        cors_origin_allowed = toolkit.request.headers.get('Origin')
+
+    if cors_origin_allowed is not None:
+        response.headers['Access-Control-Allow-Origin'] = \
+            cors_origin_allowed
+        response.headers['Access-Control-Allow-Methods'] = \
+            'POST, PUT, GET, DELETE, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = \
+            'X-CKAN-API-KEY, Authorization, Content-Type'
+
+    return response
+
+
+def __after__(self, action, **params):
+    set_cors_headers_for_response(toolkit.response)
+
+
+BaseController.__after__ = __after__
 
 
 class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
