@@ -117,7 +117,7 @@ msgstr "Organisations"
 
 #: ckanext/tayside/templates/header.html:7
 msgid "Groups"
-msgstr ""
+msgstr "Themes"
 
 #: ckanext/tayside/templates/header.html:8
 msgid "Showcases"
@@ -370,3 +370,19 @@ msgid "Resource not found"
 msgstr "Or maybe you don't have permission to view it. "
 "Please try searching for what you are looking for, or if you are a registered user login and try again."
 
+msgid "Add Group"
+msgstr "Add Theme"
+
+msgid "What are Groups?"
+msgstr "What are Themes?"
+
+msgid "groups"
+msgstr "themes"
+
+msgid "group"
+msgstr "theme"
+
+msgid "{number} group found"
+msgid_plural "{number} groups found"
+msgstr[0] "{number} theme found"
+msgstr[1] "{number} themes found"

@@ -3,6 +3,9 @@
 {% block help_inner %}
   <h2 class="module-heading">{{ _('Why Sign Up?') }}</h2>
   <div class="module-content">
-    <p>{% trans %}Register to follow datasets or submit a data request. If you are a member of an organisation in the city then you will also be able to publish your own datasets.{% endtrans %}</p>
+    <p>Register to follow datasets or submit a data request.</p>
+    <p>If you are a member of an organisation in the city then you will also be able to publish your own datasets.</p>
+    <p>We’ll use your information in accordance with our <a href="{{ h.url_for('pages_show', page='/privacy') }}">{{ _('privacy policy') }}</a>.</p>
+    </p>
   </div>
 {% endblock %}
