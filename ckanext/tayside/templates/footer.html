@@ -3,9 +3,9 @@
 {% block footer_content %}
   {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
   <ul class="inline list-wide">
-    <li><a href="#">{{ _('Cookies') }}</a></li>
-    <li><a href="#">{{ _('Code of Conduct') }}</a></li>
-    <li><a href="#">{{ _('Data Policy') }}</a></li>
+    <li><a href="{{ h.url_for('pages_show', page='/privacy') }}">{{ _('Cookies & Privacy') }}</a></li>
+    <li><a href="{{ h.url_for('pages_show', page='/code-of-conduct') }}">{{ _('Code of Conduct') }}</a></li>
+    <li><a href="{{ h.url_for('pages_show', page='/open-data-policy') }}">{{ _('Data Policy') }}</a></li>
     <li><a href="{{ api_url }}">{{ _('CKAN API') }}</a></li>
   </ul>
 {% endblock %}
