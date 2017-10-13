@@ -22,7 +22,7 @@
   {{ form.markdown('notes', id='field-notes', label=_('Description'), placeholder=_('eg. Some useful notes about the data'), value=data.notes, error=errors.notes, is_required=True) }}
 {% endblock %}
 
-{% block package_basic_fields_tags %}
+{#{% block package_basic_fields_tags %}
   {% set attrs = {'multiple': 'multiple', 'data-module': 'autocomplete'} %}
   {% set tags = h.tayside_get_tags() %}
   {% set classes = ['control-select', 'control-full'] %}
@@ -45,4 +45,4 @@
     </select>
   {% endcall %}
 {% endblock %}
-
+#}
