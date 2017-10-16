@@ -7,6 +7,7 @@ from ckan import model
 from ckan.plugins import toolkit
 from ckan.controllers.admin import get_sysadmins
 import ckan.lib.mailer as ckan_mailer
+import ckan.lib.helpers as h
 
 from ckanext.googleanalytics.ga_auth import init_service, get_profile_id
 
@@ -185,9 +186,13 @@ class CheckUpdateFrequency(CkanCommand):
 
                 if resources:
                     for resource in resources:
-                        if resource.get('url_type') == 'upload':
+                        last_modified = resource.get('last_modified')
+
+                        if resource.get('url_type') == 'upload' and\
+                           last_modified is not None:
+
                             days_diff = self._days_between(
-                                current_time, resource.get('last_modified')
+                                current_time, last_modified
                             )
 
                             if current_update_frequency == 'Daily':
@@ -267,8 +272,11 @@ class CheckUpdateFrequency(CkanCommand):
                                 item.get('dataset').get('name'))
 
     def _send_mail(self, recipient_email, user_name, dataset_name):
-        subject = 'Dataset outdated'
-        body = 'body text'
+        subject = 'Outdated dataset'
+        url = h.url_for(controller='package', action='read', id=dataset_name,
+                        qualified=True)
+        body = 'The dataset {0} is outdated. Go to {1} and make sure it\'s '\
+            'updated.'.format(dataset_name, url)
 
         try:
             self.log.info('Notifying user {0} for dataset {1}...'.format(
