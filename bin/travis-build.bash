@@ -46,6 +46,12 @@ python setup.py develop
 pip install -r requirements.txt
 cd -
 
+echo "Installing ckanext-report..."
+git clone https://github.com/datagovuk/ckanext-report
+cd ckanext-report
+python setup.py develop
+cd -
+
 echo "Installing ckanext-qa and its requirements..."
 git clone https://github.com/ViderumGlobal/ckanext-qa
 cd ckanext-qa
