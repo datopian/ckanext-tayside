@@ -188,8 +188,9 @@ class CheckUpdateFrequency(CkanCommand):
                     for resource in resources:
                         last_modified = resource.get('last_modified')
 
-                        if resource.get('url_type') == 'upload' and\
-                           last_modified is not None:
+                        if resource.get('url_type') == 'upload':
+                            if last_modified is None:
+                                last_modified = resource.get('created')
 
                             days_diff = self._days_between(
                                 current_time, last_modified
