@@ -172,7 +172,7 @@ class CheckUpdateFrequency(CkanCommand):
         current_time = datetime.date.today().strftime('%Y-%m-%dT%H:%M:%S.%f')
         outdated_datasets = []
 
-        for dataset in datasets.get('results')[0:10]:
+        for dataset in datasets.get('results'):
             pkg = toolkit.get_action('package_show')(
                 {'ignore_auth': True}, {'id': dataset.get('id')}
             )
