@@ -52,6 +52,14 @@ cd ckanext-report
 python setup.py develop
 cd -
 
+echo "Installing ckanext-archiver and its requirements..."
+git clone https://github.com/ViderumGlobal/ckanext-archiver
+cd ckanext-archiver
+git checkout v1.0.4-ckan-2.7
+python setup.py develop
+pip install -r requirements.txt
+cd -
+
 echo "Installing ckanext-qa and its requirements..."
 git clone https://github.com/ViderumGlobal/ckanext-qa
 cd ckanext-qa
