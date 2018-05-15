@@ -134,18 +134,27 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
 
         schema.update({
             'tag_string': [not_empty],
+
         })
 
         return schema
 
     def update_package_schema(self):
         ignore_empty = toolkit.get_validator('ignore_empty')
+        ignore_missing = toolkit.get_validator('ignore_missing')
+        email_validator = toolkit.get_validator('email_validator')
 
         schema = super(TaysidePlugin, self).update_package_schema()
         schema = self._modify_package_schema(schema)
 
         schema.update({
             'tag_string': [ignore_empty],
+            'title': [ignore_missing, unicode],
+            'notes': [ignore_missing, unicode],
+            'author': [ignore_missing, unicode],
+            'author_email': [ignore_missing, unicode, email_validator],
+            'maintainer': [ignore_missing, unicode],
+            'maintainer_email': [ignore_missing, unicode, email_validator],
         })
 
         return schema

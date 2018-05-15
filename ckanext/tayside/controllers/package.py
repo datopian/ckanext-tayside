@@ -18,8 +18,8 @@ import ckan.lib.navl.dictization_functions as dict_fns
 from ckan.common import config
 from ckan.lib.redis import is_redis_available
 
-from ckanext.qa.sniff_format import sniff_file_format
-from ckanext.qa.lib import resource_format_scores
+#from ckanext.qa.sniff_format import sniff_file_format
+#from ckanext.qa.lib import resource_format_scores
 
 get_action = logic.get_action
 NotAuthorized = logic.NotAuthorized
