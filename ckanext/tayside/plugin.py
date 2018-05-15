@@ -103,7 +103,6 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         not_empty = toolkit.get_validator('not_empty')
         email_validator = toolkit.get_validator('email_validator')
         not_missing = toolkit.get_validator('not_missing')
-        tag_name_validator = toolkit.get_validator('tag_name_validator')
 
         schema.update({
             'allowed_users': [ignore_empty,
@@ -111,12 +110,12 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
                               tayside_validators.users_in_org_exists,
                               tayside_converters.convert_usernames_to_ids,
                               convert_to_extras],
-            'title': [not_empty, unicode],
-            'notes': [not_empty, unicode],
-            'author': [not_empty, unicode],
-            'author_email': [not_empty, unicode, email_validator],
-            'maintainer': [not_empty, unicode],
-            'maintainer_email': [not_empty, unicode, email_validator],
+            'title': [tayside_validators.empty_if_harvested, unicode],
+            'notes': [tayside_validators.empty_if_harvested, unicode],
+            'author': [tayside_validators.empty_if_harvested, unicode],
+            'author_email': [tayside_validators.empty_if_harvested, unicode, email_validator],
+            'maintainer': [tayside_validators.empty_if_harvested, unicode],
+            'maintainer_email': [tayside_validators.empty_if_harvested, unicode, email_validator],
             'frequency': [ignore_empty, unicode, convert_to_extras]
         })
 

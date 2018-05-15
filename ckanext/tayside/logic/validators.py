@@ -27,3 +27,21 @@ def users_in_org_exists(key, data, errors, context):
             message = 'User {0} is already a member of the organization {1}.'\
                 .format(user, org_name)
             raise toolkit.Invalid(message)
+
+
+def empty_if_harvested(key, data, errors, context):
+
+    if not _is_harvested_dataset(data):
+        value = data.get(key)
+        if not value or value is toolkit.missing:
+            errors[key].append(toolkit._('Missing value'))
+            raise toolkit.StopOnError
+
+
+def _is_harvested_dataset(data):
+    for field, value in data.iteritems():
+        if (field[0] == 'extras' and
+            field[2] == 'key' and
+                value == 'harvest_source_id'):
+            return True
+    return False
