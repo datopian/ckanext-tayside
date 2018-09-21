@@ -5,7 +5,7 @@
     <div role="main">
   {% endblock %}
   {% block main_content %}
-    <div class="container-fluid">
+    <div id="content" class="container-fluid">
       {% block toolbar %}
       {{ super() }}
       {% endblock %}
@@ -15,7 +15,7 @@
         {{ super() }}
       {% endblock %}
     </div>
-    <div id="content" class="container">
+    <div class="container">
       <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
         {% block pre_primary %}
           {{ super() }}

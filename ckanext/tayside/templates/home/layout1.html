@@ -57,7 +57,7 @@
             <a href="{{ article_url }}" class="news-item">
               {% if article.image %}
                 <figure class="news-item-photo">
-                  <img src="{{ article.image }}">
+                  <img src="{{ article.image }}" alt="{{ article.title }} news article cover">
                 </figure>
               {% endif %}
               <span class="news-item-title">{{ article.title or article.name }}</span>
