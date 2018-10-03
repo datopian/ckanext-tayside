@@ -62,12 +62,4 @@ python setup.py develop
 pip install -r requirements.txt
 cd -
 
-echo "Installing ckanext-qa and its requirements..."
-git clone https://github.com/ViderumGlobal/ckanext-qa
-cd ckanext-qa
-git checkout v1.0.1-tayside
-python setup.py develop
-pip install -r requirements.txt
-cd -
-
 echo "travis-build.bash is done."
