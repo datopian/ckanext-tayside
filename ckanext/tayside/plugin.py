@@ -113,9 +113,11 @@ class TaysidePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             'title': [tayside_validators.empty_if_harvested, unicode],
             'notes': [tayside_validators.empty_if_harvested, unicode],
             'author': [tayside_validators.empty_if_harvested, unicode],
-            'author_email': [tayside_validators.empty_if_harvested, unicode, email_validator],
+            'author_email': [tayside_validators.empty_if_harvested, unicode,
+                             email_validator],
             'maintainer': [tayside_validators.empty_if_harvested, unicode],
-            'maintainer_email': [tayside_validators.empty_if_harvested, unicode, email_validator],
+            'maintainer_email': [tayside_validators.empty_if_harvested,
+                                 unicode, email_validator],
             'frequency': [ignore_empty, unicode, convert_to_extras]
         })
 
