@@ -41,6 +41,7 @@ git clone https://github.com/ckan/ckanext-googleanalytics
 cd ckanext-googleanalytics
 python setup.py develop
 pip install -r requirements.txt
+pip install oauth2client
 cd -
 
 echo "Installing ckanext-report..."
