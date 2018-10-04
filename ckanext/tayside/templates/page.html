@@ -49,7 +49,7 @@
 
           <a href="{{ logo.logo_link_url }}" target="_blank">
             <figure>
-              <img src="{{ logo_image_url }}" {% if logo.logo_text %}alt="{{ logo.logo_text }}"{% endif %}>
+              <img src="{{ logo_image_url }}" alt="{{ logo.logo_text or 'Organization logo'}}">
               {% if logo.logo_text %}
                 <figcaption>{{ logo.logo_text }}</figcaption>
               {% endif %}
