@@ -5,7 +5,7 @@
     <div role="main">
   {% endblock %}
   {% block main_content %}
-    <div class="container-fluid">
+    <div id="content" class="container-fluid">
       {% block toolbar %}
       {{ super() }}
       {% endblock %}
@@ -15,7 +15,7 @@
         {{ super() }}
       {% endblock %}
     </div>
-    <div id="content" class="container">
+    <div class="container">
       <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
         {% block pre_primary %}
           {{ super() }}
@@ -49,7 +49,7 @@
 
           <a href="{{ logo.logo_link_url }}" target="_blank">
             <figure>
-              <img src="{{ logo_image_url }}" {% if logo.logo_text %}alt="{{ logo.logo_text }}"{% endif %}>
+              <img src="{{ logo_image_url }}" alt="{{ logo.logo_text or 'Organization logo'}}">
               {% if logo.logo_text %}
                 <figcaption>{{ logo.logo_text }}</figcaption>
               {% endif %}
