@@ -11,7 +11,7 @@
 {% if site_symbol_url %}
   <img class="hero-search-symbol" src="{{ site_symbol_url }}" alt="{{ g.site_title }} logo"/>
 {% endif %}
-<div class="module module-hero-search module-narrow module-shallow">
+<div id="content" class="module module-hero-search module-narrow module-shallow">
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
     <div class="search-input control-group search-giant">
       <label class="visuallyhidden" for="search-form">Search box</label>
