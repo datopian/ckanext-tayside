@@ -34,19 +34,18 @@ parse_params = logic.parse_params
 class PackageController(_PackageController):
 
     def _tag_string_to_list(self, tag_string):
-        ''' This method is overriden because "tag_string" that is sent through
+        ''' This method is overridden because "tag_string" that is sent through
         the form comes as an array and not as a string. In the original
         implementation this method expects a string. '''
 
         if isinstance(tag_string, unicode):
-            tag_string = [tag_string]
+            tags = tag_string.split(',')
 
         out = []
-        for tag in tag_string:
-            tag = tag.strip()
-            if tag:
-                out.append({'name': tag,
-                            'state': 'active'})
+
+        for tag in tags:
+            out.append({'name': tag, 'state': 'active'})
+
         return out
 
     def create_metadata_package(self):
