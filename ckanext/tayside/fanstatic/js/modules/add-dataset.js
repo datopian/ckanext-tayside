@@ -21,13 +21,13 @@ this.ckan.module('add-dataset-modal', function($) {
       this.datasetModalBackdrop.on('click', this._onCloseModal)
       this.dismissButton.on('click', this._onCloseModal)
     },
+    _onCloseModal: function(event) {
+      this.datasetModal.hide()
+      this.datasetModalBackdrop.hide()
+    },
     _onAddDatasetClick: function(event) {
       this.datasetModal.show()
       this.datasetModalBackdrop.show()
-    },
-    _onCloseModal(event) {
-      this.datasetModal.hide()
-      this.datasetModalBackdrop.hide()
     }
   }
 })
@@ -38,6 +38,7 @@ this.ckan.module('add-dataset-modal', function($) {
 $(document).ready(function(){
 
   var isIE11 = !!navigator.userAgent.match(/Trident.*rv\:11\./);
+  //alert(isIE11);
   if(isIE11) {
     $('.btn').click(function(){
       $('.add-dataset-modal').css('display','block');
