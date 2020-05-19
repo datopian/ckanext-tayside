@@ -4,6 +4,7 @@
 *
 */
 
+
 this.ckan.module('add-dataset-modal', function($) {
   'use strict';
 
@@ -30,3 +31,28 @@ this.ckan.module('add-dataset-modal', function($) {
     }
   }
 })
+
+
+
+// Bugfix for modal not working on IE //s
+$(document).ready(function(){
+
+  var isIE11 = !!navigator.userAgent.match(/Trident.*rv\:11\./);
+  if(isIE11) {
+    $('.btn').click(function(){
+      $('.add-dataset-modal').css('display','block');
+      $('.add-dataset-modal-backdrop').css('display','block'); 
+    });
+  
+    $('.close').click(function(){
+      $('.add-dataset-modal').css('display','none');
+      $('.add-dataset-modal-backdrop').css('display','none'); 
+    });
+  
+    $('.add-dataset-modal-backdrop').click(function(){
+      $(this).css('display','none'); 
+      $('.add-dataset-modal').css('display','none');
+    });
+  }
+  
+});
